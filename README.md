@@ -1,4 +1,4 @@
-<div style="background-color: #FFF;">
+<div style="backgroundColor: #FFF;">
     <img src="./src/logo.svg" alt="vanilla dating" width="50%">
 </div>
 # A modern approach to online dating
