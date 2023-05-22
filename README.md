@@ -2,7 +2,16 @@
 
 # A modern approach to online dating
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+Dating has become so boring these days. In a world of confused people looking for love, with unrealistic expectations, our mission is to lovingly guide the online/offline process in creative and unconventional ways to help everyone find the most important thing in life - <3
+
+# We really think about the technology
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template. We also used the following technologies to support this libraries and help deliver you new features quickly to better improve your experience:
+
+-   react bootstrap
+-   font awesome
+-   eslint
+-   prettier
 
 ## Available Scripts
 
