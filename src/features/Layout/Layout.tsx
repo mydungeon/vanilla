@@ -6,12 +6,12 @@ import Main from 'src/features/Main'
 import Footer from 'src/features/Footer'
 import './Layout.styles.scss'
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ ...props }: LayoutProps) {
     return (
         <div className="layout" data-testid="layout">
-            <Container>
+            <Container fluid className="d-flex flex-column vh-100">
                 <Header />
-                <Main>{children}</Main>
+                <Main {...props} />
                 <Footer />
             </Container>
         </div>

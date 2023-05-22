@@ -1,3 +1,5 @@
 export default interface MainProps {
-    children?: JSX.Element[] | JSX.Element
+    center?: JSX.Element[] | JSX.Element
+    left?: JSX.Element[] | JSX.Element
+    right?: JSX.Element[] | JSX.Element
 }
