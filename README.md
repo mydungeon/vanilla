@@ -1,4 +1,4 @@
-<div style="width: 50%; height: 50%; background-color: #FFF;">
+<div style="width:60px ; height:60px">
 ![vanilla dating](/src/logo.svg?raw=true 'vanilla dating')
 </div>
 
