@@ -1,4 +1,4 @@
-![vanilla dating](/src/logo.svg 'vanilla dating'){ width=60%,height:30px }
+![vanilla dating](/src/logo.svg 'vanilla dating' width="50%")
 
 # A modern approach to online dating
 
