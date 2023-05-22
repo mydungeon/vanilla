@@ -1,4 +1,6 @@
+<div style="width: 50%; height: 50%; background-color: #FFF;">
 ![vanilla dating](/src/logo.svg 'vanilla dating')
+</div>
 
 # A modern approach to online dating
 
