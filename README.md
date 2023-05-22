@@ -1,4 +1,4 @@
-<img src="./src/logo.svg" alt="vanilla dating">
+<img src="./src/logo.svg" alt="vanilla dating" width="50%">
 
 # A modern approach to online dating
 
