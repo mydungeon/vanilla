@@ -1,5 +1,6 @@
-<img src="./src/logo.svg" alt="vanilla dating" width="50%">
-
+<div style="background-color: #FFF;">
+    <img src="./src/logo.svg" alt="vanilla dating" width="50%">
+</div>
 # A modern approach to online dating
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
