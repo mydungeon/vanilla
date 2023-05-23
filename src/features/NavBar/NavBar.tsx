@@ -3,7 +3,6 @@ import NavBarProps from './NavBar.types'
 import './NavBar.styles.scss'
 import { Container, Navbar as SiteNav } from 'react-bootstrap'
 import NavLinks from '../NavLinks'
-import Logo from '../Logo'
 import List from 'src/icons/List'
 import X from 'src/icons/X'
 
@@ -21,9 +20,7 @@ export default function NavBar({ children }: NavBarProps) {
                 variant="dark"
                 onToggle={handleSetIsToggled}
             >
-                <SiteNav.Brand>
-                    <Logo />
-                </SiteNav.Brand>
+                <SiteNav.Brand></SiteNav.Brand>
                 <SiteNav.Toggle aria-controls="navbarScroll">
                     {isToggled ? <X /> : <List />}
                 </SiteNav.Toggle>

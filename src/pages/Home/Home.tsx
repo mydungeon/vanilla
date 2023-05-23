@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import Layout from 'src/features/Layout'
-import Logo from 'src/features/Logo'
+import Logo from 'src/icons/Logo'
 import './Home.styles.scss'
 
 function Center() {
