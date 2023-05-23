@@ -8,10 +8,10 @@ Dating has become so boring these days. In a world of confused people looking fo
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template. We also used the following technologies to support this libraries and help deliver you new features quickly to better improve your experience:
 
--   react bootstrap
--   font awesome
--   eslint
--   prettier
+-   [react bootstrap](https://react-bootstrap.netlify.app/)
+-   [bootstrap icons](https://icons.getbootstrap.com/)
+-   [eslint](https://eslint.org/)
+-   [prettier](https://prettier.io/)
 
 ## Available Scripts
 

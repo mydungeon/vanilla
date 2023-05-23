@@ -5,7 +5,7 @@ import './Footer.styles.scss'
 
 export default function Footer({ children }: FooterProps) {
     return (
-        <Row className="align-items-end">
+        <Row className="align-items-end bg-dark text-white">
             <Col>1</Col>
             <Col xs={10}>{children}</Col>
             <Col>3</Col>

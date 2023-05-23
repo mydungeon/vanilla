@@ -1,3 +1,3 @@
-export default interface HomeProps {
+export default interface ListProps {
     children?: JSX.Element[] | JSX.Element
 }

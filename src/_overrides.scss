@@ -1,0 +1,33 @@
+.btn-primary {
+    background-color: map-get($colors, pink);
+    border-color: map-get($colors, pink);
+    font-family: "brevia", sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    transition: all .7s;
+}
+
+.btn-primary:hover {
+    background-color: map-get($colors, black);
+    border-color: map-get($colors, pink);
+    color: $pink;
+}
+
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.nav-link {
+    color: map-get($colors, pink);
+    font-family: "brevia-regular", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+.border-bottom.border-primary {
+    border-color: map-get($colors, pink) !important;
+}
