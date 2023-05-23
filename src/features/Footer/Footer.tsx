@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Heart from 'src/icons/Heart'
-import { COPYRIGHT } from './Footer.constants'
+import { getCopyright } from './Footer.utils'
 
 export default function Footer() {
     return (
@@ -11,7 +11,7 @@ export default function Footer() {
                 <Heart />
             </Col>
             <Col className="copyright align-self-center text-end">
-                {COPYRIGHT}
+                {getCopyright()}
             </Col>
         </Row>
     )
