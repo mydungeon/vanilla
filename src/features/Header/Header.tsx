@@ -7,7 +7,9 @@ export default function Header({ children }: HeaderProps) {
     return (
         <Row className="align-items-start bg-dark text-white">
             <Col></Col>
-            <Col xs={12}>{children}</Col>
+            <Col className="p-0" xs={12}>
+                {children}
+            </Col>
             <Col></Col>
         </Row>
     )
