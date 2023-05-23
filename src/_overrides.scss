@@ -31,3 +31,8 @@
 .border-bottom.border-primary {
     border-color: map-get($colors, pink) !important;
 }
+.copyright {
+    font-family: "ice-cream-slant", sans-serif !important;
+    font-weight: 400;
+    font-style: normal;
+}

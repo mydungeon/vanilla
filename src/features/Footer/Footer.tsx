@@ -7,11 +7,12 @@ export default function Footer() {
     return (
         <Row className="align-items-end bg-dark text-white">
             <Col></Col>
-            <Col xs={10}>
+            <Col xs={1}>
                 <Heart />
+            </Col>
+            <Col className="copyright align-self-center text-end">
                 {COPYRIGHT}
             </Col>
-            <Col></Col>
         </Row>
     )
 }

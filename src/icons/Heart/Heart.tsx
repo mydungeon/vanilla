@@ -6,7 +6,7 @@ export default function Heart() {
     return (
         <img
             alt="heart"
-            className="heart img-fluid m-3"
+            className="heart m-3"
             data-testid="heart"
             src={heart}
         />
