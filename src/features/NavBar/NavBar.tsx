@@ -14,7 +14,7 @@ export default function NavBar({ children }: NavBarProps) {
     return (
         <Container className="p-0" fluid>
             <SiteNav
-                className="border-bottom border-primary"
+                className="border-bottom border-primary pb-0"
                 collapseOnSelect
                 expand="xs"
                 bg="dark"
