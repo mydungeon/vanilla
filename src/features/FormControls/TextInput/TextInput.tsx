@@ -11,9 +11,9 @@ export default function TextInput({
 }: TextInputProps) {
     return (
         <Form.Group className="mb-3" controlId={controlId}>
-            {label ?? <Form.Label className="w-100">{label}</Form.Label>}
+            {label && <Form.Label className="w-100">{label}</Form.Label>}
             <Form.Control type={type} placeholder={placeholder} />
-            {message ?? <Form.Text className="text-muted">{message}</Form.Text>}
+            {message && <Form.Text className="text-muted">{message}</Form.Text>}
         </Form.Group>
     )
 }
