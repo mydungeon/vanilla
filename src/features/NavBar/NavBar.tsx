@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import NavBarProps from './NavBar.types'
 import { Container, Navbar as SiteNav } from 'react-bootstrap'
-import Logo from 'src/icons/Logo'
-import NavLinks from 'src/features/NavLinks'
-import List from 'src/icons/List'
-import X from 'src/icons/X'
+import Toggle from './components/Toggle'
+import NavMenu from './components/NavMenu'
+import NavLogo from './components/NavLogo'
 
 export default function NavBar({ hasLogo, isDarkTheme }: NavBarProps) {
     const [isToggled, setIsToggled] = useState(false)
@@ -20,15 +19,9 @@ export default function NavBar({ hasLogo, isDarkTheme }: NavBarProps) {
                 variant={theme}
                 onToggle={handleSetIsToggled}
             >
-                <SiteNav.Brand className="ps-3">
-                    {hasLogo ? <Logo /> : null}
-                </SiteNav.Brand>
-                <SiteNav.Toggle aria-controls="navbarScroll">
-                    {isToggled ? <X /> : <List />}
-                </SiteNav.Toggle>
-                <SiteNav.Collapse id="myCollapse" in={isToggled}>
-                    <NavLinks />
-                </SiteNav.Collapse>
+                <NavLogo hasLogo={hasLogo} />
+                <Toggle isToggled={isToggled} />
+                <NavMenu isToggled={isToggled} />
             </SiteNav>
         </Container>
     )
