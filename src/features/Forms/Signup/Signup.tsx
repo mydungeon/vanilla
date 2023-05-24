@@ -1,8 +1,7 @@
 import React from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 import SignupProps from './Signup.types'
-import TextInput from 'src/features/FormControls/TextInput'
-import CheckboxInput from 'src/features/FormControls/CheckboxInput'
+import { TextInput, CheckboxInput } from 'src/features/FormControls'
 
 export default function Signup({ children }: SignupProps) {
     return (

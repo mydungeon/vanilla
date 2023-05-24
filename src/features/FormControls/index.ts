@@ -1,2 +1,2 @@
-import FormControls from './FormControls'
-export default FormControls
+import { TextInput, CheckboxInput } from './FormControls'
+export { TextInput, CheckboxInput }

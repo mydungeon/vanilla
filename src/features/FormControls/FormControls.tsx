@@ -1,10 +1,5 @@
 import React from 'react'
-import FormControlsProps from './FormControls.types'
+import TextInput from './TextInput'
+import CheckboxInput from './CheckboxInput'
 
-export default function FormControls({ children }: FormControlsProps) {
-    return (
-        <div className="formcontrols" data-testid="formcontrols">
-            {children}
-        </div>
-    )
-}
+export { TextInput, CheckboxInput }
