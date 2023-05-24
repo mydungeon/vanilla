@@ -1,13 +1,12 @@
 import React from 'react'
 import MainProps from './Main.types'
 import { Col, Row } from 'react-bootstrap'
-import './Main.styles.scss'
 
-export default function Main({ center, left, right }: MainProps) {
+export default function Main({ main, left, right }: MainProps) {
     return (
         <Row className="flex-grow-1 align-items-center align-content-center">
             <Col>{left}</Col>
-            <Col xs={10}>{center}</Col>
+            <Col xs={10}>{main}</Col>
             <Col>{right}</Col>
         </Row>
     )

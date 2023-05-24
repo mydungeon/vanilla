@@ -1,3 +1,6 @@
+.bg-light {
+    background-color: map-get($colors, grey) !important;
+}
 .btn-primary {
     background-color: map-get($colors, pink);
     border-color: map-get($colors, pink);
@@ -22,14 +25,24 @@
     box-shadow: none;
 }
 
+.navbar-light.bg-light {
+    background-color: map-get($colors, grey) !important;
+}
+
 .nav-link {
     color: map-get($colors, pink);
     font-family: "brevia-regular", sans-serif;
     font-style: normal;
     font-weight: 400;
 }
+.border-top,
+.border-top.border-primary,
 .border-bottom.border-primary {
     border-color: map-get($colors, pink) !important;
+}
+label,
+.form-lable {
+    font-family: "brevia-regular", sans-serif;
 }
 .copyright {
     font-family: "ice-cream-slant", sans-serif !important;

@@ -1,5 +1,6 @@
 .logo {
     height: 10vmin;
+    min-width: 100px;
     pointer-events: none;
 }
 
@@ -11,14 +12,14 @@
 
 @keyframes logo-float {
     0% {
-        transform: translateY(0);
+        transform: translateY(-5px);
     }
 
     50% {
-        transform: translateY(10px);
+        transform: translateY(5px);
     }
 
     100% {
-        transform: translateY(0px);
+        transform: translateY(-5px);
     }
 }

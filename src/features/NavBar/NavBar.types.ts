@@ -1,3 +1,4 @@
 export default interface NavBarProps {
-    children?: JSX.Element[] | JSX.Element
+    isDarkTheme: boolean
+    hasLogo: boolean
 }

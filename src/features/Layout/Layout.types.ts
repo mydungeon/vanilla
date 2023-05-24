@@ -1,5 +1,7 @@
 export default interface LayoutProps {
-    center?: JSX.Element[] | JSX.Element
+    isDarkTheme: boolean
+    hasLogo: boolean
     left?: JSX.Element[] | JSX.Element
+    main?: JSX.Element[] | JSX.Element
     right?: JSX.Element[] | JSX.Element
 }

@@ -1,16 +1,14 @@
 import React from 'react'
 import HeaderProps from './Header.types'
 import { Col, Row } from 'react-bootstrap'
-import './Header.styles.scss'
+import NavBar from 'src/features/NavBar'
 
-export default function Header({ children }: HeaderProps) {
+export default function Header({ ...props }: HeaderProps) {
     return (
-        <Row className="align-items-start bg-dark text-white">
-            <Col></Col>
+        <Row className="align-items-start">
             <Col className="p-0" xs={12}>
-                {children}
+                <NavBar {...props} />
             </Col>
-            <Col></Col>
         </Row>
     )
 }
