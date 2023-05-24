@@ -1,5 +1,5 @@
 import React from 'react'
-import heart from 'src/heart.svg'
+import { FOOTER_LOGO } from 'src/App.constants'
 import './Heart.styles.scss'
 
 export default function Heart() {
@@ -8,7 +8,7 @@ export default function Heart() {
             alt="heart"
             className="heart m-3"
             data-testid="heart"
-            src={heart}
+            src={FOOTER_LOGO}
         />
     )
 }

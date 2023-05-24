@@ -10,7 +10,7 @@ export default function NavLogo({ hasLogo }: NavLogoProps) {
             {hasLogo ? (
                 <LinkContainer to="/">
                     <Nav.Link>
-                        <Logo />
+                        <Logo classNames="header" />
                     </Nav.Link>
                 </LinkContainer>
             ) : null}

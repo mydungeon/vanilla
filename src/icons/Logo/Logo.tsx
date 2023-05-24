@@ -1,14 +1,15 @@
 import React from 'react'
-import logo from 'src/logo.svg'
+import { LOGO } from 'src/App.constants'
+import LogoProps from './Logo.types'
 import './Logo.styles.scss'
 
-export default function Logo() {
+export default function Logo({ classNames = '' }: LogoProps) {
     return (
         <img
             alt="logo"
-            className="logo img-fluid"
+            className={`logo img-fluid ${classNames}`}
             data-testid="logo"
-            src={logo}
+            src={LOGO}
         />
     )
 }
