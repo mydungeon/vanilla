@@ -1,5 +1,5 @@
 import React from 'react'
-import SignupForm from 'src/features/Forms/Signup'
+import { SignupForm } from 'src/features/Forms'
 import Layout from 'src/features/Layout'
 
 export default function Signup() {

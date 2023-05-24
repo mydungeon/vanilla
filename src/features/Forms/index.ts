@@ -1,2 +1,2 @@
-import Forms from './Forms'
-export default Forms
+import { SignupForm } from './Forms'
+export { SignupForm }
