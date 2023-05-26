@@ -3,11 +3,13 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 // import { usersApi } from 'src/appState/usersApi'
 import { baseApi } from 'src/appState/baseApi'
 import authReducer from 'src/auth/authSlice'
+import notificationsReducer from 'src/appState/notificationsSlice'
 
 export const store = configureStore({
     reducer: {
         auth: authReducer,
         [baseApi.reducerPath]: baseApi.reducer,
+        notifications: notificationsReducer,
         // counter: counterReducer,
         // [usersApi.reducerPath]: usersApi.reducer,
     },

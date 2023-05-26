@@ -7,7 +7,7 @@ import SplashProps from './Splash.types'
 export default function Splash({ children }: SplashProps) {
     return (
         <div className="splash" data-testid="splash">
-            <Container style={{ maxWidth: '400px' }} fluid className="w-100">
+            <Container fluid className="w-100">
                 <Row>
                     <Col>
                         <Logo />

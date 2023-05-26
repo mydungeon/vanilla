@@ -1,4 +1,4 @@
-<img src="./src/logo.svg" alt="vanilla dating" width="50%">
+<img src="./src/assets/svg/vanilla.svg" alt="vanilla dating" width="50%">
 
 # A modern approach to online dating
 
@@ -9,7 +9,10 @@ Dating has become so boring these days. In a world of confused people looking fo
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template. We also used the following technologies to support this libraries and help deliver you new features quickly to better improve your experience:
 
 -   [react bootstrap](https://react-bootstrap.netlify.app/)
+-   [formik](https://formik.org/docs/overview)
+-   [yup](https://github.com/jquense/yup)
 -   [bootstrap icons](https://icons.getbootstrap.com/)
+-   [Sass](https://sass-lang.com/)
 -   [eslint](https://eslint.org/)
 -   [prettier](https://prettier.io/)
 

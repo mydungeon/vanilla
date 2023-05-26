@@ -24,6 +24,7 @@ export default function Signup({ children }: SignupProps) {
         if (!values.password) {
             errors.password = 'Required'
         }
+        console.log('errors', errors)
         return errors
     }
 
@@ -44,14 +45,7 @@ export default function Signup({ children }: SignupProps) {
                     isValid,
                 }) => (
                     <Container>
-                        <Row
-                            className="justify-content-center"
-                            xs="auto"
-                            sm="auto"
-                            md="auto"
-                            lg="auto"
-                            xl="auto"
-                        >
+                        <Row className="justify-content-center" xs="auto">
                             <Col>
                                 <Form
                                     noValidate

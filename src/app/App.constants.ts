@@ -1,6 +1,6 @@
-import LOGO from 'src/assets/svg/gaim.svg'
+import LOGO from 'src/assets/svg/vanilla.svg'
 import FOOTER_LOGO from 'src/assets/svg/heart.svg'
-const APP_NAME = 'gaim'
+const APP_NAME = 'vanilla'
 const APP_LINKS = [
     { text: 'Sign up', to: '/signup' },
     { text: 'Search', to: '/search' },
