@@ -13,7 +13,7 @@ export default function Splash({ children }: SplashProps) {
                         <Logo />
                     </Col>
                 </Row>
-                <Row className="mt-5">
+                <Row className="mt-5 text-center">
                     <Col>
                         <LinkContainer to="signup">
                             <Button

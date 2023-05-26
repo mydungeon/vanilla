@@ -1,5 +1,5 @@
 import React from 'react'
-import { FOOTER_LOGO } from 'src/App.constants'
+import { FOOTER_LOGO } from 'src/app/App.constants'
 import './Heart.styles.scss'
 
 export default function Heart() {

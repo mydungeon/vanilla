@@ -1,4 +1,4 @@
-import { APP_NAME } from 'src/App.constants'
+import { APP_NAME } from 'src/app/App.constants'
 
 export function getCopyright() {
     const currentYear = new Date().getFullYear()

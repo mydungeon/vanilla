@@ -45,6 +45,11 @@ label,
 .form-lable {
     font-family: "brevia-regular", sans-serif;
 }
+.form-check.checkbox-lg > .form-check-input {
+    height: 25px;
+    margin-right: 10px;
+    width: 25px;
+}
 .copyright {
     font-family: "ice-cream-slant", sans-serif !important;
     font-weight: 400;

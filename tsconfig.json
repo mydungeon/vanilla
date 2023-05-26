@@ -17,5 +17,6 @@
     "strict": true,
     "target": "es5"
   },
+  "exclude": ["src/features/counter", "**/*.old.tsx"],
   "include": ["src"]
 }

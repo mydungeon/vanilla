@@ -9,7 +9,11 @@ export default function CheckboxInput({
 }: CheckboxInputProps) {
     return (
         <Form.Group className="mb-3" controlId={controlId}>
-            <Form.Check type={type} label={label} />
+            <Form.Check
+                className="checkbox-lg m-3 fs-5"
+                type={type}
+                label={label}
+            />
         </Form.Group>
     )
 }

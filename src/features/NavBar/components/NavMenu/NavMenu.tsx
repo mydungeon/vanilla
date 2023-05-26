@@ -5,7 +5,7 @@ import NavLinks from 'src/features/NavLinks'
 
 export default function NavMenu({ isToggled }: NavMenuProps) {
     return (
-        <Navbar.Collapse id="myCollapse" in={isToggled}>
+        <Navbar.Collapse id="myCollapse" in={isToggled} className="text-center">
             <NavLinks />
         </Navbar.Collapse>
     )
