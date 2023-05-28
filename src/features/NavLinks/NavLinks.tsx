@@ -12,7 +12,7 @@ export default function NavLinks() {
                         key={text}
                         text={text}
                         to={to}
-                        isLast={i + 1 === array.length}
+                        hasBorder={!(i + 1 === array.length)}
                     />
                 ))}
             </Nav>

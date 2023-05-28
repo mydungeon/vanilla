@@ -1,5 +1,5 @@
 export default interface NavLinkProps {
-    isLast: boolean
+    hasBorder?: boolean
     text: string
     to: string
 }

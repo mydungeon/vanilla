@@ -16,6 +16,12 @@
     color: $pink;
 }
 
+.btn-primary:disabled {
+    background-color: map-get($colors, black);
+    border-color: map-get($colors, black);
+    color: $white;
+}
+
 .navbar-toggler,
 .navbar-toggler:focus,
 .navbar-toggler:active,
@@ -54,4 +60,13 @@ label,
     font-family: "ice-cream-slant", sans-serif !important;
     font-weight: 400;
     font-style: normal;
+}
+.iconOverride {
+    color: map-get($colors, pink);
+    cursor: pointer;
+}
+h1, .h1 {
+    font-size: 2.5em;
+    font-family: "ice-cream-slant", sans-serif !important;
+    margin-bottom: 2rem !important;
 }

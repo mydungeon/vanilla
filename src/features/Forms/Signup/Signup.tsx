@@ -1,31 +1,18 @@
-import React, { useState } from 'react'
-import { Col, Container, Form, Row } from 'react-bootstrap'
+import React from 'react'
+import { LinkContainer } from 'react-router-bootstrap'
 import { Formik } from 'formik'
+import { Col, Container, Form, Row } from 'react-bootstrap'
 import { validationSchema, initialValues } from './Signup.schema'
+import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
-import SignupProps from './Signup.types'
-import { TextInput, CheckboxInput } from 'src/features/FormControls'
+import NavLink from 'src/features/NavLink'
+import { validate } from './Signup.utils'
+import { SIGN_IN_LINK, SIGN_UP_LINK } from 'src/app/App.constants'
 
-export default function Signup({ children }: SignupProps) {
+export default function Signup() {
     function handleOnSubmit(values: any, actions: any) {
         console.log('submitted', values)
-    }
-
-    function validate(values: any) {
-        const errors: any = {}
-
-        if (!values.email) {
-            errors.email = 'Required'
-        } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{3,}$/i.test(values.email)
-        ) {
-            errors.email = 'Invalid email address'
-        }
-        if (!values.password) {
-            errors.password = 'Required'
-        }
-        console.log('errors', errors)
-        return errors
+        actions.resetForm()
     }
 
     return (
@@ -37,15 +24,16 @@ export default function Signup({ children }: SignupProps) {
                 initialValues={initialValues}
             >
                 {({
-                    handleSubmit,
-                    handleChange,
-                    values,
-                    touched,
+                    dirty,
                     errors,
+                    handleChange,
+                    handleSubmit,
                     isValid,
+                    touched,
+                    values,
                 }) => (
                     <Container>
-                        <Row className="justify-content-center" xs="auto">
+                        <Row className="justify-content-center" xs={12}>
                             <Col>
                                 <Form
                                     noValidate
@@ -53,42 +41,111 @@ export default function Signup({ children }: SignupProps) {
                                     onSubmit={handleSubmit}
                                 >
                                     <TextInput
-                                        controlId="emailAddress"
+                                        controlId="firstName"
+                                        error={errors?.firstName}
                                         isInvalid={Boolean(
-                                            touched.email && errors.email
+                                            touched?.firstName &&
+                                                errors?.firstName
                                         )}
                                         isValid={Boolean(
-                                            touched.email && !errors.email
+                                            touched?.firstName &&
+                                                !errors?.firstName
                                         )}
-                                        label="Email address"
-                                        message={`We'll never share your email with anyone else.`}
+                                        name="firstName"
+                                        onChange={handleChange}
+                                        placeholder="First name"
+                                        type="firstName"
+                                        value={values.firstName}
+                                    />
+                                    <TextInput
+                                        controlId="lastName"
+                                        error={errors?.lastName}
+                                        isInvalid={Boolean(
+                                            touched?.lastName &&
+                                                errors?.lastName
+                                        )}
+                                        isValid={Boolean(
+                                            touched?.lastName &&
+                                                !errors?.lastName
+                                        )}
+                                        name="lastName"
+                                        onChange={handleChange}
+                                        placeholder="Last name"
+                                        type="lastName"
+                                        value={values.lastName}
+                                    />
+                                    <TextInput
+                                        controlId="emailAddress"
+                                        error={errors?.email}
+                                        isInvalid={Boolean(
+                                            touched?.email && errors?.email
+                                        )}
+                                        isValid={Boolean(
+                                            touched?.email && !errors?.email
+                                        )}
                                         name="email"
                                         onChange={handleChange}
-                                        placeholder="Enter email"
+                                        placeholder="Email"
                                         type="email"
                                         value={values.email}
                                     />
                                     <TextInput
                                         controlId="password"
+                                        error={errors?.password}
                                         isInvalid={Boolean(
-                                            touched.password && errors.password
+                                            touched?.password &&
+                                                errors?.password
                                         )}
                                         isValid={Boolean(
-                                            touched.password && !errors.password
+                                            touched?.password &&
+                                                !errors?.password
                                         )}
-                                        label="Password"
                                         name="password"
                                         onChange={handleChange}
                                         placeholder="Password"
                                         type="password"
                                         value={values.password}
                                     />
-                                    <CheckboxInput
-                                        controlId="formBasicRememberMe"
-                                        label="Remember me"
-                                        type="checkbox"
+                                    <TextInput
+                                        controlId="passwordConfirm"
+                                        error={errors?.passwordConfirm}
+                                        isInvalid={Boolean(
+                                            touched?.passwordConfirm &&
+                                                errors?.passwordConfirm
+                                        )}
+                                        isValid={Boolean(
+                                            touched?.passwordConfirm &&
+                                                !errors?.passwordConfirm
+                                        )}
+                                        name="passwordConfirm"
+                                        onChange={handleChange}
+                                        placeholder="Confirm Password"
+                                        type="password"
+                                        value={values.passwordConfirm}
                                     />
-                                    <ButtonInput text="Sign up" />
+                                    <Container>
+                                        <Row>
+                                            <Col xs={8}>
+                                                <ButtonInput
+                                                    text={SIGN_UP_LINK.text}
+                                                    disabled={
+                                                        !(dirty && isValid)
+                                                    }
+                                                />
+                                            </Col>
+                                            <Col xs={4}>
+                                                <LinkContainer
+                                                    to={SIGN_IN_LINK.to}
+                                                >
+                                                    <NavLink
+                                                        hasBorder={false}
+                                                        text={SIGN_IN_LINK.text}
+                                                        to={SIGN_IN_LINK.to}
+                                                    />
+                                                </LinkContainer>
+                                            </Col>
+                                        </Row>
+                                    </Container>
                                 </Form>
                             </Col>
                         </Row>
