@@ -22,6 +22,18 @@
     color: $white;
 }
 
+.btn-link {
+    color: map-get($colors, pink);
+    text-decoration: none;
+}
+.btn-link:hover {
+    color: map-get($colors, black);
+}
+
+.navbar-dark .btn-link:hover {
+    color: map-get($colors, grey);
+}
+
 .navbar-toggler,
 .navbar-toggler:focus,
 .navbar-toggler:active,

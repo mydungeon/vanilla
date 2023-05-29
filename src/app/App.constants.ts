@@ -8,14 +8,8 @@ export const BLOG_LINK = { text: 'Blog', to: '/blog' }
 export const ADMIN_LINK = { text: 'Admin', to: '/admin' }
 export const SIGN_IN_LINK = { text: 'Sign in', to: '/signin' }
 export const SIGN_UP_LINK = { text: 'Sign up', to: '/signup' }
-const APP_LINKS = [
-    PROFILE_LINK,
-    SEARCH_LINK,
-    HOME_LINK,
-    BLOG_LINK,
-    ADMIN_LINK,
-    SIGN_IN_LINK,
-    SIGN_UP_LINK,
-]
+const APP_LINKS = [PROFILE_LINK, SEARCH_LINK, HOME_LINK, BLOG_LINK, ADMIN_LINK]
 
-export { APP_NAME, APP_LINKS, FOOTER_LOGO, LOGO }
+const AUTH_LINKS = [SIGN_IN_LINK, SIGN_UP_LINK]
+
+export { APP_NAME, APP_LINKS, AUTH_LINKS, FOOTER_LOGO, LOGO }

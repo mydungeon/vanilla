@@ -2,13 +2,16 @@ import React, { useEffect } from 'react'
 import Routes from 'src/routes/Routes'
 import { BrowserRouter } from 'react-router-dom'
 import { useAppDispatch } from 'src/appState/hooks'
+import { getUserFromLocalStorage } from './App.utils'
 import { setAuth } from 'src/appState/authSlice'
 
 function App() {
     const dispatch = useAppDispatch()
-    const user = JSON.parse(localStorage.getItem('user') || '{}')
+    const user = getUserFromLocalStorage()
     useEffect(() => {
-        dispatch(setAuth(user))
+        if (user) {
+            dispatch(setAuth(JSON.parse(user)))
+        }
     }, [])
     return (
         <div className="App">
