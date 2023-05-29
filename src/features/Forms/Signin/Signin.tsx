@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useAppDispatch } from 'src/appState/hooks'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Formik } from 'formik'
 import { Col, Container, Form, Row } from 'react-bootstrap'
@@ -7,12 +8,14 @@ import { TextInput, CheckboxInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import NavLink from 'src/features/NavLink'
 import { validate } from './Signin.utils'
-import { useSignInMutation } from 'src/apis/authApi'
+import { useSignInMutation } from 'src/appState/authApi'
 import { PROFILE_LINK, SIGN_IN_LINK, SIGN_UP_LINK } from 'src/app/App.constants'
 import { useNavigate } from 'react-router-dom'
+import { setAuth } from 'src/appState/authSlice'
 
 export default function Signin() {
     //TODO: create /users/signin api in vanilla-api
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const [
         signIn,
@@ -34,6 +37,12 @@ export default function Signin() {
 
     useEffect(() => {
         if (isSignInSuccess) {
+            dispatch(
+                setAuth({
+                    name: signInData.result.name,
+                    token: signInData.token,
+                })
+            )
             navigate(PROFILE_LINK.to)
         }
     }, [isSignInSuccess])

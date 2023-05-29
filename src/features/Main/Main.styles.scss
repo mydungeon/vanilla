@@ -1,0 +1,25 @@
+.blinking {
+    animation: blinkingText .25s infinite;
+}
+
+@keyframes blinkingText {
+    0% {
+        background-color: #FFF;
+    }
+
+    25% {
+        background-color: #000;
+    }
+
+    50% {
+        background-color: #FF1488;
+    }
+
+    75% {
+        background-color: #000;
+    }
+
+    100% {
+        background-color: #FFF;
+    }
+}

@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
-import { authApi } from 'src/apis/authApi'
+import authReducer from 'src/appState/authSlice'
+import { authApi } from 'src/appState/authApi'
 import alertsReducer from 'src/appState/alertsSlice'
 import { setupListeners } from '@reduxjs/toolkit/dist/query'
 
 export const store = configureStore({
     reducer: {
+        auth: authReducer,
         [authApi.reducerPath]: authApi.reducer,
         alerts: alertsReducer,
     },

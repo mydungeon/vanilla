@@ -1,7 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
 import { store } from 'src/appState/store'
 import App from 'src/app'
 import reportWebVitals from './reportWebVitals'
@@ -13,9 +12,7 @@ const root = createRoot(container)
 root.render(
     // <React.StrictMode>
     <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+        <App />
     </Provider>
     // </React.StrictMode>
 )
