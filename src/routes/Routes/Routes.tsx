@@ -1,5 +1,6 @@
 import React from 'react'
 import { Routes as ReactRouterDomRoutes, Route } from 'react-router-dom'
+// import ProtectedRoute from 'src/routes/ProtectedRoute'
 import HomePage from 'src/pages/HomePage'
 import ProfilePage from 'src/pages/ProfilePage'
 import SignupPage from 'src/pages/SignupPage'
@@ -11,6 +12,7 @@ export default function Routes() {
     return (
         <ReactRouterDomRoutes>
             <Route path="/" element={<HomePage />} />
+            {/* TODO: add protected routes  */}
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="search" element={<SearchPage />} />
             <Route path="/signin" element={<SigninPage />} />
