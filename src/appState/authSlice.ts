@@ -15,22 +15,14 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setAuth: (
+        setUserAndToken: (
             state,
             action: PayloadAction<{ name: string; token: string }>
         ) => {
-            localStorage.setItem(
-                'user',
-                JSON.stringify({
-                    name: action.payload.name,
-                    token: action.payload.token,
-                })
-            )
             state.name = action.payload.name
             state.token = action.payload.token
         },
-        unsetAuth: (state) => {
-            localStorage.clear()
+        clearUserAndToken: (state) => {
             state.name = null
             state.token = null
         },
@@ -39,6 +31,6 @@ export const authSlice = createSlice({
 
 export const selectAuth = (state: RootState) => state.auth
 
-export const { setAuth, unsetAuth } = authSlice.actions
+export const { setUserAndToken, clearUserAndToken } = authSlice.actions
 
 export default authSlice.reducer

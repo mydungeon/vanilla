@@ -5,8 +5,8 @@ import './Main.styles.scss'
 
 export default function Main({ easterEgg, main, left, right }: MainProps) {
     const classNames = easterEgg
-        ? 'flex-grow-1 align-items-center blinking'
-        : 'flex-grow-1 align-items-center'
+        ? 'main flex-grow-1 align-items-center blinking'
+        : 'main flex-grow-1 align-items-center'
     return (
         <Row xs="auto" className={classNames}>
             <Col xs={2} sm={3} lg={4}>

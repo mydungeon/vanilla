@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAppSelector } from 'src/appState/hooks'
+import { useAppSelector } from 'src/hooks'
 import ProfileProps from './Profile.types'
 import { selectAuth } from 'src/appState/authSlice'
 import { SignoutButton } from 'src/features/Buttons'

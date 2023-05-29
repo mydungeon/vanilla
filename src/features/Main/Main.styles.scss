@@ -1,3 +1,6 @@
+.main {
+    background-color: #FFF;
+}
 .blinking {
     animation: blinkingText .25s infinite;
 }
@@ -16,7 +19,7 @@
     }
 
     75% {
-        background-color: #000;
+        background-color: #14CCFF;
     }
 
     100% {
