@@ -133,7 +133,10 @@ export default function Signup() {
                                                     }
                                                 />
                                             </Col>
-                                            <Col xs={4}>
+                                            <Col
+                                                xs={4}
+                                                className="align-self-center"
+                                            >
                                                 <LinkContainer
                                                     to={SIGN_IN_LINK.to}
                                                 >

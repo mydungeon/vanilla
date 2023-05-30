@@ -1,3 +1,4 @@
+import ForgotPasswordForm from './ForgotPassword'
 import SigninForm from './Signin'
 import SignupForm from './Signup'
-export { SigninForm, SignupForm }
+export { ForgotPasswordForm, SigninForm, SignupForm }

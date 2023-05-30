@@ -9,13 +9,13 @@ export default function Main({ easterEgg, main, left, right }: MainProps) {
         : 'main flex-grow-1 align-items-center'
     return (
         <Row xs="auto" className={classNames}>
-            <Col xs={2} sm={3} lg={4}>
+            <Col xs={1} sm={2} lg={4}>
                 {left}
             </Col>
-            <Col className="justify-content-center" xs={8} sm={6} lg={4}>
+            <Col className="justify-content-center" xs={10} sm={8} lg={4}>
                 {main}
             </Col>
-            <Col xs={2} sm={3} lg={4}>
+            <Col xs={1} sm={2} lg={4}>
                 {right}
             </Col>
         </Row>

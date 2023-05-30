@@ -3,23 +3,18 @@ import { useAppDispatch } from 'src/hooks'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Formik } from 'formik'
 import { Col, Container, Form, Row } from 'react-bootstrap'
-import { validationSchema, initialValues } from './Signin.schema'
+import { validationSchema, initialValues } from './ForgotPassword.schema'
 import { TextInput, CheckboxInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import NavLink from 'src/features/NavLink'
-import { validate } from './Signin.utils'
+import { validate } from './ForgotPassword.utils'
 import { useSignInMutation } from 'src/appState/authApi'
-import {
-    FORGOT_PASSWORD_LINK,
-    PROFILE_LINK,
-    SIGN_IN_LINK,
-    SIGN_UP_LINK,
-} from 'src/app/App.constants'
+import { FORGOT_PASSWORD_LINK, SIGN_IN_LINK } from 'src/app/App.constants'
 import { useNavigate } from 'react-router-dom'
 import { setUserAndToken } from 'src/appState/authSlice'
 import { setUserInLocalStorage } from 'src/app/App.utils'
 
-export default function Signin() {
+export default function ForgotPassword() {
     //TODO: create /users/signin api in vanilla-api
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
@@ -54,7 +49,7 @@ export default function Signin() {
                     token,
                 })
             )
-            navigate(PROFILE_LINK.to)
+            // navigate(PROFILE_LINK.to)
         }
     }, [isSignInSuccess])
 
@@ -98,66 +93,27 @@ export default function Signin() {
                                         type="email"
                                         value={values.email}
                                     />
-                                    <TextInput
-                                        controlId="password"
-                                        error={errors?.password}
-                                        isInvalid={Boolean(
-                                            touched?.password &&
-                                                errors?.password
-                                        )}
-                                        isValid={Boolean(
-                                            touched?.password &&
-                                                !errors?.password
-                                        )}
-                                        name="password"
-                                        onChange={handleChange}
-                                        placeholder="Password"
-                                        type="password"
-                                        value={values.password}
-                                    />
-                                    <CheckboxInput
-                                        controlId="formBasicRememberMe"
-                                        label="Remember me"
-                                        type="checkbox"
-                                    />
                                     <Container>
                                         <Row>
-                                            <Col xs={5}>
+                                            <Col xs={8}>
                                                 <ButtonInput
-                                                    text={SIGN_IN_LINK.text}
+                                                    text={`Reset password`}
                                                     disabled={
                                                         !(dirty && isValid)
                                                     }
                                                 />
                                             </Col>
                                             <Col
-                                                xs={7}
+                                                xs={4}
                                                 className="align-self-center"
                                             >
                                                 <LinkContainer
-                                                    to={FORGOT_PASSWORD_LINK.to}
+                                                    to={SIGN_IN_LINK.to}
                                                 >
                                                     <NavLink
                                                         hasBorder={false}
-                                                        text={
-                                                            FORGOT_PASSWORD_LINK.text
-                                                        }
-                                                        to={
-                                                            FORGOT_PASSWORD_LINK.to
-                                                        }
-                                                    />
-                                                </LinkContainer>
-                                            </Col>
-                                        </Row>
-                                        <Row className="text-center pt-3">
-                                            <Col xs={12}>
-                                                <LinkContainer
-                                                    to={SIGN_UP_LINK.to}
-                                                >
-                                                    <NavLink
-                                                        hasBorder={false}
-                                                        text={SIGN_UP_LINK.text}
-                                                        to={SIGN_UP_LINK.to}
+                                                        text={SIGN_IN_LINK.text}
+                                                        to={SIGN_IN_LINK.to}
                                                     />
                                                 </LinkContainer>
                                             </Col>
