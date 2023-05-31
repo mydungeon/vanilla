@@ -9,7 +9,9 @@ export const BLOG_LINK = { text: 'Blog', to: '/blog' }
 export const ADMIN_LINK = { text: 'Admin', to: '/admin' }
 export const SIGN_IN_LINK = { text: 'Sign in', to: '/signin' }
 export const SIGN_UP_LINK = { text: 'Sign up', to: '/signup' }
-export const FORGOT_PASSWORD_LINK = { text: 'Forgot password?', to: '/forgot' }
+export const FORGOT_LINK = { text: 'Forgot password?', to: '/forgot' }
+export const RESET_LINK = { text: 'Reset password?', to: '/reset' }
+export const OTP_LINK = { text: 'One Time Passcode', to: '/otp' }
 const APP_LINKS = [PROFILE_LINK, SEARCH_LINK, HOME_LINK, BLOG_LINK, ADMIN_LINK]
 
 const AUTH_LINKS = [SIGN_IN_LINK, SIGN_UP_LINK]

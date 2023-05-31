@@ -16,3 +16,7 @@ export function setUserInLocalStorage(name: string, token: string) {
 export function clearLocalStorage() {
     localStorage.clear()
 }
+
+export function generateOTP() {
+    return Math.floor(Math.random() * 9000 + 1000)
+}

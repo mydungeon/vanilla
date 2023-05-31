@@ -8,6 +8,8 @@ import Blog from 'src/blog/Blog'
 import SigninPage from 'src/pages/SigninPage'
 import SearchPage from 'src/pages/SearchPage'
 import ForgotPasswordPage from 'src/pages/ForgotPasswordPage'
+import ResetPasswordPage from 'src/pages/ResetPasswordPage'
+import OneTimePasscodePage from 'src/pages/OneTimePasscodePage'
 
 export default function Routes() {
     return (
@@ -15,8 +17,10 @@ export default function Routes() {
             <Route path="/" element={<HomePage />} />
             {/* TODO: add protected routes  */}
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="search" element={<SearchPage />} />
+            <Route path="/search" element={<SearchPage />} />
             <Route path="/forgot" element={<ForgotPasswordPage />} />
+            <Route path="/reset" element={<ResetPasswordPage />} />
+            <Route path="/otp" element={<OneTimePasscodePage />} />
             <Route path="/signin" element={<SigninPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/blog" element={<Blog />} />

@@ -1,6 +1,8 @@
 export default interface TextInputProps {
     controlId?: string
     error?: string
+    formControlClasses?: string
+    formGroupClasses?: string
     isInvalid?: boolean
     isValid?: boolean
     label?: string

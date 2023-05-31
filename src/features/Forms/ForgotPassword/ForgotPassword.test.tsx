@@ -4,5 +4,5 @@ import ForgotPassword from './ForgotPassword'
 
 test('loads and displays ForgotPassword component', async () => {
     render(<ForgotPassword />)
-    expect(screen.getByTestId('forgotpassword')).toBeTruthy()
+    expect(screen.getByTestId('forgotPassword')).toBeTruthy()
 })

@@ -10,7 +10,7 @@ import NavLink from 'src/features/NavLink'
 import { validate } from './Signin.utils'
 import { useSignInMutation } from 'src/appState/authApi'
 import {
-    FORGOT_PASSWORD_LINK,
+    FORGOT_LINK,
     PROFILE_LINK,
     SIGN_IN_LINK,
     SIGN_UP_LINK,
@@ -135,16 +135,12 @@ export default function Signin() {
                                                 className="align-self-center"
                                             >
                                                 <LinkContainer
-                                                    to={FORGOT_PASSWORD_LINK.to}
+                                                    to={FORGOT_LINK.to}
                                                 >
                                                     <NavLink
                                                         hasBorder={false}
-                                                        text={
-                                                            FORGOT_PASSWORD_LINK.text
-                                                        }
-                                                        to={
-                                                            FORGOT_PASSWORD_LINK.to
-                                                        }
+                                                        text={FORGOT_LINK.text}
+                                                        to={FORGOT_LINK.to}
                                                     />
                                                 </LinkContainer>
                                             </Col>

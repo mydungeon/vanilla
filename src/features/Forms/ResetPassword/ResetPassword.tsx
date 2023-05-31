@@ -2,43 +2,43 @@ import React, { useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Formik } from 'formik'
 import { Col, Container, Form, Row } from 'react-bootstrap'
-import { validationSchema, initialValues } from './Signup.schema'
+import { validationSchema, initialValues } from './ResetPassword.schema'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import NavLink from 'src/features/NavLink'
-import { validate } from './Signup.utils'
-import { SIGN_IN_LINK, SIGN_UP_LINK } from 'src/app/App.constants'
-import { useSignUpMutation } from 'src/appState/authApi'
+import { useResetMutation } from 'src/appState/authApi'
+import { SIGN_IN_LINK } from 'src/app/App.constants'
+import { validate } from './ResetPassword.utils'
 import { useNavigate } from 'react-router-dom'
 
-export default function Signup() {
+export default function ForgotPassword() {
     const navigate = useNavigate()
     const [
-        signUp,
+        reset,
         {
-            data: signUpData,
-            isSuccess: isSignUpSuccess,
-            isError: isSignUpError,
-            error: signUpError,
+            data: resetData,
+            isSuccess: isResetSuccess,
+            isError: isResetError,
+            error: resetError,
         },
-    ] = useSignUpMutation()
+    ] = useResetMutation()
 
     async function handleOnSubmit(values: any, actions: any) {
-        const { email, firstName, lastName, password } = values
-        if (email && firstName && lastName && password) {
-            await signUp({ email, firstName, lastName, password })
+        const { password } = values
+        if (password) {
+            await reset({ password })
             actions.resetForm()
         }
     }
 
     useEffect(() => {
-        if (isSignUpSuccess) {
+        if (isResetSuccess) {
             navigate(SIGN_IN_LINK.to)
         }
-    }, [isSignUpSuccess])
+    }, [isResetSuccess])
 
     return (
-        <div className="signup" data-testid="signup">
+        <div className="forgotPassword" data-testid="forgotPassword">
             <Formik
                 validationSchema={validationSchema}
                 validate={validate}
@@ -63,55 +63,6 @@ export default function Signup() {
                                     onSubmit={handleSubmit}
                                 >
                                     <TextInput
-                                        controlId="firstName"
-                                        error={errors?.firstName}
-                                        isInvalid={Boolean(
-                                            touched?.firstName &&
-                                                errors?.firstName
-                                        )}
-                                        isValid={Boolean(
-                                            touched?.firstName &&
-                                                !errors?.firstName
-                                        )}
-                                        name="firstName"
-                                        onChange={handleChange}
-                                        placeholder="First name"
-                                        type="firstName"
-                                        value={values.firstName}
-                                    />
-                                    <TextInput
-                                        controlId="lastName"
-                                        error={errors?.lastName}
-                                        isInvalid={Boolean(
-                                            touched?.lastName &&
-                                                errors?.lastName
-                                        )}
-                                        isValid={Boolean(
-                                            touched?.lastName &&
-                                                !errors?.lastName
-                                        )}
-                                        name="lastName"
-                                        onChange={handleChange}
-                                        placeholder="Last name"
-                                        type="lastName"
-                                        value={values.lastName}
-                                    />
-                                    <TextInput
-                                        controlId="emailAddress"
-                                        error={errors?.email}
-                                        isInvalid={Boolean(
-                                            touched?.email && errors?.email
-                                        )}
-                                        isValid={Boolean(
-                                            touched?.email && !errors?.email
-                                        )}
-                                        name="email"
-                                        onChange={handleChange}
-                                        placeholder="Email"
-                                        type="email"
-                                        value={values.email}
-                                    />
-                                    <TextInput
                                         controlId="password"
                                         error={errors?.password}
                                         isInvalid={Boolean(
@@ -124,7 +75,7 @@ export default function Signup() {
                                         )}
                                         name="password"
                                         onChange={handleChange}
-                                        placeholder="Password"
+                                        placeholder="New Password"
                                         type="password"
                                         value={values.password}
                                     />
@@ -141,7 +92,7 @@ export default function Signup() {
                                         )}
                                         name="passwordConfirm"
                                         onChange={handleChange}
-                                        placeholder="Confirm Password"
+                                        placeholder="Confirm New Password"
                                         type="password"
                                         value={values.passwordConfirm}
                                     />
@@ -149,7 +100,7 @@ export default function Signup() {
                                         <Row>
                                             <Col xs={8}>
                                                 <ButtonInput
-                                                    text={SIGN_UP_LINK.text}
+                                                    text={`Reset my password`}
                                                     disabled={
                                                         !(dirty && isValid)
                                                     }

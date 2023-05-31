@@ -1,60 +1,49 @@
-import React, { useEffect } from 'react'
-import { useAppDispatch } from 'src/hooks'
-import { LinkContainer } from 'react-router-bootstrap'
+import React, { useEffect, useState } from 'react'
 import { Formik } from 'formik'
 import { Col, Container, Form, Row } from 'react-bootstrap'
 import { validationSchema, initialValues } from './ForgotPassword.schema'
-import { TextInput, CheckboxInput } from 'src/features/FormControls'
+import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
-import NavLink from 'src/features/NavLink'
 import { validate } from './ForgotPassword.utils'
-import { useSignInMutation } from 'src/appState/authApi'
-import { FORGOT_PASSWORD_LINK, SIGN_IN_LINK } from 'src/app/App.constants'
+import { useForgotMutation } from 'src/appState/authApi'
+import { generateOTP } from 'src/app/App.utils'
 import { useNavigate } from 'react-router-dom'
-import { setUserAndToken } from 'src/appState/authSlice'
-import { setUserInLocalStorage } from 'src/app/App.utils'
+import { OTP_LINK } from 'src/app/App.constants'
 
 export default function ForgotPassword() {
-    //TODO: create /users/signin api in vanilla-api
-    const dispatch = useAppDispatch()
+    const [email, setEmail] = useState(null)
+    const [otp, setOtp] = useState(0)
+
     const navigate = useNavigate()
     const [
-        signIn,
+        forgot,
         {
-            data: signInData,
-            isSuccess: isSignInSuccess,
-            isError: isSignInError,
-            error: signInError,
+            data: forgotData,
+            isSuccess: isForgotSuccess,
+            isError: isForgotError,
+            error: forgotError,
         },
-    ] = useSignInMutation()
+    ] = useForgotMutation()
 
     async function handleOnSubmit(values: any, actions: any) {
-        const { email, password } = values
-        if (email && password) {
-            await signIn({ email, password })
+        const { email } = values
+        if (email) {
+            const oneTimePasscode = generateOTP()
+            await forgot({ to: email, otp: oneTimePasscode })
+            setEmail(email)
+            setOtp(oneTimePasscode)
             actions.resetForm()
         }
     }
 
     useEffect(() => {
-        if (isSignInSuccess) {
-            const {
-                result: { name },
-                token,
-            } = signInData
-            setUserInLocalStorage(name, token)
-            dispatch(
-                setUserAndToken({
-                    name,
-                    token,
-                })
-            )
-            // navigate(PROFILE_LINK.to)
+        if (isForgotSuccess && email && otp !== 0) {
+            navigate(OTP_LINK.to, { state: { to: email, otp } })
         }
-    }, [isSignInSuccess])
+    }, [isForgotSuccess, email, email])
 
     return (
-        <div className="signin" data-testid="signin">
+        <div className="forgotPassword" data-testid="forgotPassword">
             <Formik
                 validationSchema={validationSchema}
                 validate={validate}
@@ -70,14 +59,14 @@ export default function ForgotPassword() {
                     touched,
                     values,
                 }) => (
-                    <Container>
-                        <Row className="justify-content-center" xs={12}>
-                            <Col>
-                                <Form
-                                    noValidate
-                                    className="w-100 text-align-start"
-                                    onSubmit={handleSubmit}
-                                >
+                    <Form
+                        noValidate
+                        className="w-100 text-align-start"
+                        onSubmit={handleSubmit}
+                    >
+                        <Container>
+                            <Row className="justify-content-center" xs={12}>
+                                <Col>
                                     <TextInput
                                         controlId="emailAddress"
                                         error={errors?.email}
@@ -93,36 +82,18 @@ export default function ForgotPassword() {
                                         type="email"
                                         value={values.email}
                                     />
-                                    <Container>
-                                        <Row>
-                                            <Col xs={8}>
-                                                <ButtonInput
-                                                    text={`Reset password`}
-                                                    disabled={
-                                                        !(dirty && isValid)
-                                                    }
-                                                />
-                                            </Col>
-                                            <Col
-                                                xs={4}
-                                                className="align-self-center"
-                                            >
-                                                <LinkContainer
-                                                    to={SIGN_IN_LINK.to}
-                                                >
-                                                    <NavLink
-                                                        hasBorder={false}
-                                                        text={SIGN_IN_LINK.text}
-                                                        to={SIGN_IN_LINK.to}
-                                                    />
-                                                </LinkContainer>
-                                            </Col>
-                                        </Row>
-                                    </Container>
-                                </Form>
-                            </Col>
-                        </Row>
-                    </Container>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <ButtonInput
+                                        text={`Email me a One Time Password`}
+                                        disabled={!(dirty && isValid)}
+                                    />
+                                </Col>
+                            </Row>
+                        </Container>
+                    </Form>
                 )}
             </Formik>
         </div>

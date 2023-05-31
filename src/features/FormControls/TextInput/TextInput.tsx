@@ -5,6 +5,7 @@ import { Form } from 'react-bootstrap'
 export default function TextInput({
     controlId,
     error,
+    formControlClasses,
     isInvalid,
     isValid,
     label,
@@ -17,8 +18,9 @@ export default function TextInput({
 }: TextInputProps) {
     return (
         <Form.Group className="mb-3" controlId={controlId}>
-            {label && <Form.Label className="w-100 fs-5">{label}</Form.Label>}
+            {label && <Form.Label>{label}</Form.Label>}
             <Form.Control
+                className={formControlClasses}
                 isValid={isValid}
                 isInvalid={isInvalid}
                 name={name}
