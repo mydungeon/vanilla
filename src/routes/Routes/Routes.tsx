@@ -22,22 +22,10 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <>
             <Route path="/" element={<HomePage />} />
-            <Route
-                path="/profile"
-                element={
-                    <ProtectedRoute>
-                        <ProfilePage />
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/admin"
-                element={
-                    <ProtectedRoute>
-                        <AdminPage />
-                    </ProtectedRoute>
-                }
-            />
+            <Route element={<ProtectedRoute />}>
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/admin" element={<AdminPage />} />
+            </Route>
             <Route path="/search" element={<SearchPage />} />
             <Route path="/forgot" element={<ForgotPasswordPage />} />
             <Route path="/reset" element={<ResetPasswordPage />} />
