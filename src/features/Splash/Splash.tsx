@@ -3,8 +3,8 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import Logo from 'src/icons/Logo'
 import SplashProps from './Splash.types'
-import Tagline from './components/Tagline'
-import { APP_TAGLINE } from 'src/app/App.constants'
+import Tagline from 'src/features/Tagline'
+import { TAGLINES } from 'src/app/App.constants'
 
 export default function Splash({ children }: SplashProps) {
     return (
@@ -13,7 +13,7 @@ export default function Splash({ children }: SplashProps) {
                 <Row>
                     <Col>
                         <Logo />
-                        <Tagline text={APP_TAGLINE} />
+                        <Tagline taglines={TAGLINES} />
                     </Col>
                 </Row>
                 <Row className="mt-3 text-center">

@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Formik } from 'formik'
 import { Col, Container, Form, Row } from 'react-bootstrap'
 import { validationSchema, initialValues } from './Signin.schema'
-import { TextInput, CheckboxInput } from 'src/features/FormControls'
+import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import NavLink from 'src/features/NavLink'
 import { validate } from './Signin.utils'
@@ -114,11 +114,6 @@ export default function Signin() {
                                         placeholder="Password"
                                         type="password"
                                         value={values.password}
-                                    />
-                                    <CheckboxInput
-                                        controlId="formBasicRememberMe"
-                                        label="Remember me"
-                                        type="checkbox"
                                     />
                                     <Container>
                                         <Row>

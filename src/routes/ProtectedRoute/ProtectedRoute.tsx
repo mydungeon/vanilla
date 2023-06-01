@@ -6,5 +6,5 @@ import { getUserFromLocalStorage } from 'src/app/App.utils'
 export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     const user = getUserFromLocalStorage()
 
-    return !user ? <Navigate to="/" /> : children
+    return !user ? <Navigate to="/signin" replace /> : <>{children}</>
 }

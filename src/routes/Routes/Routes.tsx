@@ -15,12 +15,29 @@ import SearchPage from 'src/pages/SearchPage'
 import ForgotPasswordPage from 'src/pages/ForgotPasswordPage'
 import ResetPasswordPage from 'src/pages/ResetPasswordPage'
 import OneTimePasscodePage from 'src/pages/OneTimePasscodePage'
+import ProtectedRoute from '../ProtectedRoute'
+import AdminPage from 'src/pages/AdminPage'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
             <Route path="/" element={<HomePage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route
+                path="/profile"
+                element={
+                    <ProtectedRoute>
+                        <ProfilePage />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path="/admin"
+                element={
+                    <ProtectedRoute>
+                        <AdminPage />
+                    </ProtectedRoute>
+                }
+            />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/forgot" element={<ForgotPasswordPage />} />
             <Route path="/reset" element={<ResetPasswordPage />} />

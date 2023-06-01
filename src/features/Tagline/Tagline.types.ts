@@ -1,3 +1,3 @@
 export default interface TaglineProps {
-    text: string
+    taglines: string[]
 }
