@@ -43,8 +43,6 @@ export default function OneTimePasscode() {
                 values['otp-3'],
             ].join('')
         )
-        console.log(1, location.state.otp)
-        console.log(1, otp)
         if (parsedOtp === otp) {
             actions.resetForm()
             navigate(RESET_LINK.to, { replace: true, state: { email } })

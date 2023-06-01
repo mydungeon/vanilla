@@ -29,7 +29,6 @@ export const authApi = createApi({
         }),
         forgot: builder.mutation({
             query: (body: { email: string }) => {
-                console.log('forgot mutation query', body)
                 return {
                     url: '/users/forgot',
                     method: 'post',
