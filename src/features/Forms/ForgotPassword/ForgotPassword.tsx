@@ -6,14 +6,11 @@ import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import { validate } from './ForgotPassword.utils'
 import { useForgotMutation } from 'src/appState/authApi'
-import { generateOTP } from 'src/app/App.utils'
 import { useNavigate } from 'react-router-dom'
 import { OTP_LINK } from 'src/app/App.constants'
 
 export default function ForgotPassword() {
-    const [email, setEmail] = useState(null)
-    const [otp, setOtp] = useState(0)
-
+    const [email, setEmail] = useState('')
     const navigate = useNavigate()
     const [
         forgot,
@@ -28,19 +25,21 @@ export default function ForgotPassword() {
     async function handleOnSubmit(values: any, actions: any) {
         const { email } = values
         if (email) {
-            const oneTimePasscode = generateOTP()
-            await forgot({ to: email, otp: oneTimePasscode })
+            await forgot({ email })
             setEmail(email)
-            setOtp(oneTimePasscode)
             actions.resetForm()
         }
     }
 
     useEffect(() => {
-        if (isForgotSuccess && email && otp !== 0) {
-            navigate(OTP_LINK.to, { state: { to: email, otp } })
+        if (forgotData && email) {
+            const { otp } = forgotData
+            navigate(OTP_LINK.to, {
+                replace: true,
+                state: { email, otp },
+            })
         }
-    }, [isForgotSuccess, email, email])
+    }, [forgotData, email])
 
     return (
         <div className="forgotPassword" data-testid="forgotPassword">

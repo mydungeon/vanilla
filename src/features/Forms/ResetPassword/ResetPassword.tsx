@@ -9,9 +9,10 @@ import NavLink from 'src/features/NavLink'
 import { useResetMutation } from 'src/appState/authApi'
 import { SIGN_IN_LINK } from 'src/app/App.constants'
 import { validate } from './ResetPassword.utils'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-export default function ForgotPassword() {
+export default function ResetPassword() {
+    const location = useLocation()
     const navigate = useNavigate()
     const [
         reset,
@@ -26,7 +27,7 @@ export default function ForgotPassword() {
     async function handleOnSubmit(values: any, actions: any) {
         const { password } = values
         if (password) {
-            await reset({ password })
+            await reset({ email: location.state.email, password })
             actions.resetForm()
         }
     }

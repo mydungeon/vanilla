@@ -4,16 +4,20 @@ import { Button, Col, Container, Form, Ratio, Row } from 'react-bootstrap'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import { useForgotMutation } from 'src/appState/authApi'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { initialValues, validationSchema } from './OneTimePasscode.schema'
 import { validate } from './OneTimePasscode.utils'
+import { RESET_LINK } from 'src/app/App.constants'
+import H2 from 'src/features/Elements/H2'
+const DISABLE_TIME = 60
 
 export default function OneTimePasscode() {
     const location = useLocation()
-    const { to, otp } = location.state
-    const [disabledTime, setDisabledTime] = useState(60)
+    const navigate = useNavigate()
+
+    const [otp, setOtp] = useState(location.state.otp)
+    const [disabledTime, setDisabledTime] = useState(DISABLE_TIME)
     const [disabled, setDisabled] = useState(true)
-    // const navigate = useNavigate()
     const [
         forgot,
         {
@@ -23,15 +27,37 @@ export default function OneTimePasscode() {
             error: forgotError,
         },
     ] = useForgotMutation()
-    async function handleOnSubmit(values: any, actions: any) {
+    const { email } = location?.state
+
+    const cta = !disabled
+        ? `Time is expired`
+        : `Expires: ${disabledTime} seconds`
+
+    function handleOnSubmit(values: any, actions: any) {
+        if (!disabled) return
         let parsedOtp = parseInt(
-            [values.one, values.two, values.three, values.four].join('')
+            [
+                values['otp-0'],
+                values['otp-1'],
+                values['otp-2'],
+                values['otp-3'],
+            ].join('')
         )
+        console.log(1, location.state.otp)
+        console.log(1, otp)
         if (parsedOtp === otp) {
-            console.log('otp', otp)
-            console.log('values are equal', parsedOtp, otp)
-            // await reset({ otc })
             actions.resetForm()
+            navigate(RESET_LINK.to, { replace: true, state: { email } })
+        }
+    }
+
+    function handleRefresh() {
+        if (isForgotSuccess) {
+            setDisabled(true)
+        }
+        if (forgotData) {
+            const { otp } = forgotData
+            setOtp(otp)
         }
     }
 
@@ -39,31 +65,33 @@ export default function OneTimePasscode() {
         if (disabled) {
             return
         } else {
-            await forgot({ to, otp })
+            await forgot({ email })
+            setDisabledTime(DISABLE_TIME)
         }
     }
 
     useEffect(() => {
-        if (isForgotSuccess) {
-            setDisabled(true)
-        }
-    }, [isForgotSuccess])
+        handleRefresh()
+    }, [isForgotSuccess, forgotData])
 
     useEffect(() => {
         let interval = setInterval(() => {
             setDisabledTime((lastTimerCount) => {
                 lastTimerCount <= 1 && clearInterval(interval)
-                if (lastTimerCount <= 1) setDisabled(false)
+                if (lastTimerCount <= 1) {
+                    setOtp(0)
+                    setDisabled(false)
+                }
                 if (lastTimerCount <= 0) return lastTimerCount
                 return lastTimerCount - 1
             })
-        }, 1000) //each count lasts for a second
-        //cleanup the interval on complete
+        }, 1000)
         return () => clearInterval(interval)
     }, [disabled])
 
     return (
         <div className="forgotPassword" data-testid="forgotPassword">
+            <H2 text={cta} />
             <Formik
                 validationSchema={validationSchema}
                 validate={validate}
@@ -86,93 +114,54 @@ export default function OneTimePasscode() {
                     >
                         <Container>
                             <Row>
-                                <Col>
-                                    <Ratio aspectRatio={'1x1'}>
-                                        <TextInput
-                                            controlId="one"
-                                            error={errors?.one}
-                                            formControlClasses="h-100 text-center"
-                                            isInvalid={Boolean(
-                                                touched?.one && errors?.one
-                                            )}
-                                            isValid={Boolean(
-                                                touched?.one && !errors?.one
-                                            )}
-                                            name="one"
-                                            onChange={handleChange}
-                                            placeholder=""
-                                            type="string"
-                                            value={values.one}
-                                        />
-                                    </Ratio>
-                                </Col>
-                                <Col>
-                                    <Ratio aspectRatio={'1x1'}>
-                                        <TextInput
-                                            controlId="two"
-                                            error={errors?.two}
-                                            formControlClasses="h-100 text-center"
-                                            isInvalid={Boolean(
-                                                touched?.two && errors?.two
-                                            )}
-                                            isValid={Boolean(
-                                                touched?.two && !errors?.two
-                                            )}
-                                            name="two"
-                                            onChange={handleChange}
-                                            placeholder=""
-                                            type="string"
-                                            value={values.two}
-                                        />
-                                    </Ratio>
-                                </Col>
-                                <Col>
-                                    <Ratio aspectRatio={'1x1'}>
-                                        <TextInput
-                                            controlId="three"
-                                            error={errors?.three}
-                                            formControlClasses="h-100 text-center"
-                                            isInvalid={Boolean(
-                                                touched?.three && errors?.three
-                                            )}
-                                            isValid={Boolean(
-                                                touched?.three && !errors?.three
-                                            )}
-                                            name="three"
-                                            onChange={handleChange}
-                                            placeholder=""
-                                            type="string"
-                                            value={values.three}
-                                        />
-                                    </Ratio>
-                                </Col>
-                                <Col>
-                                    <Ratio aspectRatio={'1x1'}>
-                                        <TextInput
-                                            controlId="four"
-                                            error={errors?.four}
-                                            formControlClasses="h-100 text-center"
-                                            isInvalid={Boolean(
-                                                touched?.four && errors?.four
-                                            )}
-                                            isValid={Boolean(
-                                                touched?.four && !errors?.four
-                                            )}
-                                            name="four"
-                                            onChange={handleChange}
-                                            placeholder=""
-                                            type="string"
-                                            value={values.four}
-                                        />
-                                    </Ratio>
-                                </Col>
+                                {['otp-0', 'otp-1', 'otp-2', 'otp-3'].map(
+                                    (name, i) => (
+                                        <Col key={i}>
+                                            <Ratio aspectRatio={'1x1'}>
+                                                <TextInput
+                                                    controlId={name}
+                                                    error={
+                                                        (errors as any)[name]
+                                                    }
+                                                    formControlClasses="h-100 text-center"
+                                                    isInvalid={Boolean(
+                                                        (touched as any)[
+                                                            name
+                                                        ] &&
+                                                            (errors as any)[
+                                                                name
+                                                            ]
+                                                    )}
+                                                    isValid={Boolean(
+                                                        (touched as any)[
+                                                            name
+                                                        ] &&
+                                                            !(errors as any)[
+                                                                name
+                                                            ]
+                                                    )}
+                                                    maxLength={1}
+                                                    name={name}
+                                                    onChange={handleChange}
+                                                    placeholder=""
+                                                    type="string"
+                                                    value={
+                                                        (values as any)[name]
+                                                    }
+                                                />
+                                            </Ratio>
+                                        </Col>
+                                    )
+                                )}
                             </Row>
                             <Container>
                                 <Row className="mt-3">
                                     <Col xs={8}>
                                         <ButtonInput
                                             text={`Reset my password`}
-                                            disabled={!(dirty && isValid)}
+                                            disabled={
+                                                !disabled || !(dirty && isValid)
+                                            }
                                         />
                                     </Col>
                                     <Col xs={4} className="align-self-center">

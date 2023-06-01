@@ -28,8 +28,8 @@ export const authApi = createApi({
             },
         }),
         forgot: builder.mutation({
-            query: (body: { to: string; otp: number }) => {
-                console.log('forgot mutation query')
+            query: (body: { email: string }) => {
+                console.log('forgot mutation query', body)
                 return {
                     url: '/users/forgot',
                     method: 'post',
@@ -38,9 +38,9 @@ export const authApi = createApi({
             },
         }),
         reset: builder.mutation({
-            query: (body: { password: string }) => {
+            query: (body: { email: string; password: string }) => {
                 return {
-                    url: '/users/forgot',
+                    url: '/users/reset',
                     method: 'post',
                     body,
                 }

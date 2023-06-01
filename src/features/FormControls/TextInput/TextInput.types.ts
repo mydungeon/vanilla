@@ -6,8 +6,9 @@ export default interface TextInputProps {
     isInvalid?: boolean
     isValid?: boolean
     label?: string
+    maxLength?: number
     name: string
-    onChange: (e: any) => void
+    onChange?: (e: any) => void
     placeholder: string
     message?: string
     type: string

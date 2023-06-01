@@ -5,7 +5,7 @@ import Page from 'src/features/Page'
 
 function Main() {
     return (
-        <Page h1Text="Enter One Time Passcode">
+        <Page h1Text="Enter Your Code">
             <OneTimePasscodeForm />
         </Page>
     )

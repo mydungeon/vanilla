@@ -9,10 +9,11 @@ export default function TextInput({
     isInvalid,
     isValid,
     label,
-    onChange,
-    placeholder,
+    maxLength,
     message,
     name,
+    onChange,
+    placeholder,
     type,
     value,
 }: TextInputProps) {
@@ -23,6 +24,7 @@ export default function TextInput({
                 className={formControlClasses}
                 isValid={isValid}
                 isInvalid={isInvalid}
+                maxLength={maxLength}
                 name={name}
                 onChange={onChange}
                 placeholder={placeholder}
