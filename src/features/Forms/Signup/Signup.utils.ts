@@ -1,5 +1,5 @@
 export function validate(values: any) {
-    const { email, firstName, lastName, password, passwordConfirm } = values
+    const { email, firstName, password, passwordConfirm } = values
     const errors: any = {}
     if (!email) {
         errors.email = 'Required'
@@ -8,9 +8,6 @@ export function validate(values: any) {
     }
     if (!firstName) {
         errors.firstName = 'Required'
-    }
-    if (!lastName) {
-        errors.lastName = 'Required'
     }
     if (!password) {
         errors.password = 'Required'

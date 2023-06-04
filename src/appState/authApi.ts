@@ -17,7 +17,6 @@ export const authApi = createApi({
             query: (body: {
                 email: string
                 firstName: string
-                lastName: string
                 password: string
             }) => {
                 return {

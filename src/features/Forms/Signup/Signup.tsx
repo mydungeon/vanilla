@@ -7,7 +7,11 @@ import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import NavLink from 'src/features/NavLink'
 import { validate } from './Signup.utils'
-import { SIGN_IN_LINK, SIGN_UP_LINK } from 'src/app/App.constants'
+import {
+    PROFILE_CREATE_LINK,
+    SIGN_IN_LINK,
+    SIGN_UP_LINK,
+} from 'src/app/App.constants'
 import { useSignUpMutation } from 'src/appState/authApi'
 import { useNavigate } from 'react-router-dom'
 
@@ -24,16 +28,18 @@ export default function Signup() {
     ] = useSignUpMutation()
 
     async function handleOnSubmit(values: any, actions: any) {
-        const { email, firstName, lastName, password } = values
-        if (email && firstName && lastName && password) {
-            await signUp({ email, firstName, lastName, password })
+        const { email, firstName, password } = values
+        if (email && firstName && password) {
+            await signUp({ email, firstName, password })
+
             actions.resetForm()
         }
     }
 
     useEffect(() => {
         if (isSignUpSuccess) {
-            navigate(SIGN_IN_LINK.to)
+            navigate(PROFILE_CREATE_LINK.to)
+            // navigate(SIGN_IN_LINK.to)
         }
     }, [isSignUpSuccess])
 
@@ -78,23 +84,6 @@ export default function Signup() {
                                         placeholder="First name"
                                         type="firstName"
                                         value={values.firstName}
-                                    />
-                                    <TextInput
-                                        controlId="lastName"
-                                        error={errors?.lastName}
-                                        isInvalid={Boolean(
-                                            touched?.lastName &&
-                                                errors?.lastName
-                                        )}
-                                        isValid={Boolean(
-                                            touched?.lastName &&
-                                                !errors?.lastName
-                                        )}
-                                        name="lastName"
-                                        onChange={handleChange}
-                                        placeholder="Last name"
-                                        type="lastName"
-                                        value={values.lastName}
                                     />
                                     <TextInput
                                         controlId="emailAddress"

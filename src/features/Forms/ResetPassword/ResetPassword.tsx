@@ -7,7 +7,7 @@ import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import NavLink from 'src/features/NavLink'
 import { useResetMutation } from 'src/appState/authApi'
-import { SIGN_IN_LINK } from 'src/app/App.constants'
+import { OTP_LINK, SIGN_IN_LINK } from 'src/app/App.constants'
 import { validate } from './ResetPassword.utils'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -33,11 +33,10 @@ export default function ResetPassword() {
     }
 
     useEffect(() => {
-        if (isResetSuccess) {
+        if (isResetSuccess || !location?.state?.email) {
             navigate(SIGN_IN_LINK.to)
         }
     }, [isResetSuccess])
-
     return (
         <div className="forgotPassword" data-testid="forgotPassword">
             <Formik
