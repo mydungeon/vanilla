@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { rtkQueryErrorLogger } from 'src/appMiddleware/errors'
 import authReducer from 'src/appState/authSlice'
 import { authApi } from 'src/appState/authApi'
 import alertsReducer from 'src/appState/alertsSlice'
@@ -11,8 +12,8 @@ export const store = configureStore({
         alerts: alertsReducer,
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(authApi.middleware),
-    devTools: true,
+        getDefaultMiddleware().concat(authApi.middleware, rtkQueryErrorLogger),
+    devTools: process.env.NODE_ENV !== 'production',
 })
 
 export type AppDispatch = typeof store.dispatch

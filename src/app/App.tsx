@@ -1,9 +1,9 @@
 import React from 'react'
 import Routes from 'src/routes/Routes'
-import useAuth from 'src/hooks/useAuth'
+// import useAuth from 'src/hooks/useAuth'
 
 function App() {
-    useAuth()
+    // useAuth()
     return (
         <div className="App">
             <Routes />

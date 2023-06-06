@@ -85,3 +85,9 @@ h1, .h1 {
     font-size: 2.5em;
     font-family: "ice-cream-slant", sans-serif !important;
 }
+.btn-check:checked+.btn,
+.btn-group>.btn:focus-within,
+.btn-group > .btn:hover {
+    background-color: map-get($colors, pink);
+    border: 1px solid map-get($colors, black);
+}

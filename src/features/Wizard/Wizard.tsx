@@ -12,7 +12,7 @@ export default function Wizard({ children }: WizardProps) {
     const length = Children.count(children)
     return (
         <div className="wizard">
-            <Container>
+            <Container className="text-center">
                 <Steps step={step}>{children}</Steps>
                 <WizardHeader
                     handleBack={handleBack}

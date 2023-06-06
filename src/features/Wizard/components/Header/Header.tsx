@@ -22,16 +22,28 @@ export default function WizardHeader({
             name="nextButton"
             onClick={handleNext}
         >
-            Next
+            Continue
+        </NextButton>
+    )
+
+    const finishButton = (
+        <NextButton
+            size="lg"
+            className=""
+            disabled={false}
+            name="finishButton"
+            onClick={handleNext}
+        >
+            Finish
         </NextButton>
     )
     return (
         <div className="wizardHeader">
             <Row>
-                <Col>{showBack && backButton}</Col>
+                {/* <Col>{showBack && backButton}</Col> */}
                 <Col></Col>
                 <Col className="d-flex justify-content-end">
-                    {showNext && nextButton}
+                    {showNext ? nextButton : finishButton}
                 </Col>
             </Row>
         </div>

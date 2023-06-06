@@ -7,9 +7,9 @@ const VANILLA_TAGLINES = [
     `What's ur flavor?`,
     `Goes great with chocolate`,
     `With a cherry on top`,
-    `The gateway drug to every flavor`,
+    `The gateway drug to all flavors`,
     `2 scoops w/ rainbow sprinkles`,
-    `All melted and soupy`,
+    `All melty and sweet`,
     `It's sooooo yummy`,
     `Do u wanna cup or cone?`,
 ]

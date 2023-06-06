@@ -13,10 +13,10 @@ export default function ProfileWizard() {
                 <Step title="I am a">
                     <MyProfile.Gender />
                 </Step>
-                <Step title="I am looking for a">
+                <Step title="I'm looking for a">
                     <MyProfile.Orientation />
                 </Step>
-                <Step title="My profile pic is">
+                <Step title="My best pic is">
                     <MyProfile.Pics />
                 </Step>
             </Wizard>

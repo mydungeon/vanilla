@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import {
     createBrowserRouter,
     createRoutesFromElements,
@@ -6,34 +6,123 @@ import {
     RouterProvider,
 } from 'react-router-dom'
 import ProtectedRoute from '../ProtectedRoute'
-import AdminPage from 'src/pages/AdminPage'
-import Blog from 'src/blog/Blog'
-import CreateMyPage from 'src/pages/CreateProfilePage'
-import ForgotPasswordPage from 'src/pages/ForgotPasswordPage'
-import HomePage from 'src/pages/HomePage'
-import OneTimePasscodePage from 'src/pages/OneTimePasscodePage'
-import ProfilePage from 'src/pages/ProfilePage'
-import ResetPasswordPage from 'src/pages/ResetPasswordPage'
-import SearchPage from 'src/pages/SearchPage'
-import SigninPage from 'src/pages/SigninPage'
-import SignupPage from 'src/pages/SignupPage'
+import heartPreloader from 'src/assets/gif/heart-preloader.gif'
+import './PagePreloader.styles.scss'
+
+const AdminPage = lazy(() => import('src/pages/AdminPage'))
+const Blog = lazy(() => import('src/blog/Blog'))
+const CreateMyPage = lazy(() => import('src/pages/CreateProfilePage'))
+const ForgotPasswordPage = lazy(() => import('src/pages/ForgotPasswordPage'))
+const HomePage = lazy(() => import('src/pages/HomePage'))
+const OneTimePasscodePage = lazy(() => import('src/pages/OneTimePasscodePage'))
+const ProfilePage = lazy(() => import('src/pages/ProfilePage'))
+const ResetPasswordPage = lazy(() => import('src/pages/ResetPasswordPage'))
+const SigninPage = lazy(() => import('src/pages/SigninPage'))
+const SignupPage = lazy(() => import('src/pages/SignupPage'))
+const SearchPage = lazy(() => import('src/pages/SearchPage'))
+
+function Loading() {
+    console.log('isLoading')
+    return (
+        <div className="preloader">
+            <img src={heartPreloader} alt="loading..." />
+        </div>
+    )
+}
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path="/" element={<HomePage />} />
+            <Route
+                path="/"
+                element={
+                    <Suspense fallback={<Loading />}>
+                        <HomePage />
+                    </Suspense>
+                }
+            />
             <Route element={<ProtectedRoute />}>
-                <Route path="/admin" element={<AdminPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route
+                    path="/admin"
+                    element={
+                        <Suspense fallback={<Loading />}>
+                            <AdminPage />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/profile"
+                    element={
+                        <Suspense fallback={<Loading />}>
+                            <ProfilePage />
+                        </Suspense>
+                    }
+                />
             </Route>
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/profile/create" element={<CreateMyPage />} />
-            <Route path="/forgot" element={<ForgotPasswordPage />} />
-            <Route path="/otp" element={<OneTimePasscodePage />} />
-            <Route path="/reset" element={<ResetPasswordPage />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/signin" element={<SigninPage />} />
-            <Route path="/signup" element={<SignupPage />} />
+            <Route
+                path="/blog"
+                element={
+                    <Suspense fallback={<Loading />}>
+                        <Blog />
+                    </Suspense>
+                }
+            />
+            <Route
+                path="/profile/create"
+                element={
+                    <Suspense fallback={<Loading />}>
+                        <CreateMyPage />
+                    </Suspense>
+                }
+            />
+            <Route
+                path="/forgot"
+                element={
+                    <Suspense fallback={<Loading />}>
+                        <ForgotPasswordPage />
+                    </Suspense>
+                }
+            />
+            <Route
+                path="/otp"
+                element={
+                    <Suspense fallback={<Loading />}>
+                        <OneTimePasscodePage />
+                    </Suspense>
+                }
+            />
+            <Route
+                path="/reset"
+                element={
+                    <Suspense fallback={<Loading />}>
+                        <ResetPasswordPage />
+                    </Suspense>
+                }
+            />
+            <Route
+                path="/search"
+                element={
+                    <Suspense fallback={<Loading />}>
+                        <SearchPage />
+                    </Suspense>
+                }
+            />
+            <Route
+                path="/signin"
+                element={
+                    <Suspense fallback={<Loading />}>
+                        <SigninPage />
+                    </Suspense>
+                }
+            />
+            <Route
+                path="/signup"
+                element={
+                    <Suspense fallback={<Loading />}>
+                        <SignupPage />
+                    </Suspense>
+                }
+            />
         </>
     )
 )
