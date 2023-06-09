@@ -6,7 +6,6 @@ import { WizardProps } from 'src/features/Wizard/Wizard.types'
 
 export default function Wizard({ children }: WizardProps) {
     const [step, setStep] = useState(0)
-    const [stepCompleted, setStepCompleted] = useState([])
     const handleBack = () => setStep(step - 1)
     const handleNext = () => setStep(step + 1)
     const length = Children.count(children)

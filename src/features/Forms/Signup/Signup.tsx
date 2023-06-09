@@ -14,6 +14,7 @@ import {
 } from 'src/app/App.constants'
 import { useSignUpMutation } from 'src/appState/authApi'
 import { useNavigate } from 'react-router-dom'
+import { setUserInLocalStorage } from 'src/app/App.utils'
 
 export default function Signup() {
     const navigate = useNavigate()
@@ -38,6 +39,11 @@ export default function Signup() {
 
     useEffect(() => {
         if (isSignUpSuccess) {
+            const {
+                result: { name },
+                token,
+            } = signUpData
+            setUserInLocalStorage(name, token)
             navigate(PROFILE_CREATE_LINK.to)
             // navigate(SIGN_IN_LINK.to)
         }

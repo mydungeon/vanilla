@@ -1,3 +1,3 @@
-export interface WizardProps {
+export default interface ZipcodeProps {
     children?: JSX.Element[] | JSX.Element
 }
