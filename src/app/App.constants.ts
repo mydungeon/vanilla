@@ -34,10 +34,31 @@ export const BLOG_LINK = { text: 'Blog', to: '/blog' }
 export const FORGOT_LINK = { text: 'Forgot password?', to: '/forgot' }
 export const HOME_LINK = { text: 'Home', to: '/' }
 export const OTP_LINK = { text: 'One Time Passcode', to: '/otp' }
-export const PROFILE_LINK = { text: 'Profile', to: '/profile' }
-export const PROFILE_CREATE_LINK = {
-    text: 'Profile Create',
-    to: '/profile/create',
+export const PROFILE_LINKS = {
+    DOB: {
+        text: 'My Date of Birth',
+        to: '/profile/dob',
+    },
+    GENDER: {
+        text: 'My Gender',
+        to: '/profile/gender',
+    },
+    INDEX: {
+        text: 'My Profile',
+        to: '/profile',
+    },
+    LOCATION: {
+        text: 'My DoB',
+        to: '/profile/location',
+    },
+    ORIENTATION: {
+        text: 'My Sexual Orientation',
+        to: '/profile/orientation',
+    },
+    PICS: {
+        text: 'My Profile Pics',
+        to: '/profile/pics',
+    },
 }
 export const RESET_LINK = { text: 'Reset password?', to: '/reset' }
 export const SEARCH_LINK = { text: 'Search', to: '/search' }
@@ -48,7 +69,7 @@ const APP_LINKS = [HOME_LINK, BLOG_LINK]
 
 const AUTH_LINKS = [SIGN_IN_LINK, SIGN_UP_LINK]
 
-const PROTECTED_LINKS = [ADMIN_LINK, PROFILE_LINK, SEARCH_LINK]
+const PROTECTED_LINKS = [ADMIN_LINK, PROFILE_LINKS.DOB, SEARCH_LINK]
 
 export {
     APP_LINKS,

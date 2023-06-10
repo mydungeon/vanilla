@@ -2,13 +2,12 @@ import React, { useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Formik } from 'formik'
 import { Col, Container, Form, Row } from 'react-bootstrap'
-import { validationSchema, initialValues } from './Signup.schema'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import NavLink from 'src/features/NavLink'
-import { validate } from './Signup.utils'
+import { initialValues, validate, validationSchema } from './Signup.config'
 import {
-    PROFILE_CREATE_LINK,
+    PROFILE_LINKS,
     SIGN_IN_LINK,
     SIGN_UP_LINK,
 } from 'src/app/App.constants'
@@ -44,7 +43,7 @@ export default function Signup() {
                 token,
             } = signUpData
             setUserInLocalStorage(name, token)
-            navigate(PROFILE_CREATE_LINK.to)
+            navigate(PROFILE_LINKS.DOB.to)
             // navigate(SIGN_IN_LINK.to)
         }
     }, [isSignUpSuccess])

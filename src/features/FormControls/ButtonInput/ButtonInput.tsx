@@ -13,6 +13,7 @@ export default function ButtonInput({
             variant="primary"
             type="submit"
             disabled={disabled}
+            size="lg"
         >
             {text}
         </Button>

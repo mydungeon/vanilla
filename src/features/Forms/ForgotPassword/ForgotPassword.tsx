@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Formik } from 'formik'
 import { Col, Container, Form, Row } from 'react-bootstrap'
-import { validationSchema, initialValues } from './ForgotPassword.schema'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
-import { validate } from './ForgotPassword.utils'
+import {
+    validationSchema,
+    validate,
+    initialValues,
+} from './ForgotPassword.config'
 import { useForgotMutation } from 'src/appState/authApi'
 import { useNavigate } from 'react-router-dom'
 import { OTP_LINK } from 'src/app/App.constants'

@@ -3,15 +3,14 @@ import { useAppDispatch } from 'src/hooks'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Formik } from 'formik'
 import { Col, Container, Form, Row } from 'react-bootstrap'
-import { validationSchema, initialValues } from './Signin.schema'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import NavLink from 'src/features/NavLink'
-import { validate } from './Signin.utils'
+import { initialValues, validate, validationSchema } from './Signin.config'
 import { useSignInMutation } from 'src/appState/authApi'
 import {
     FORGOT_LINK,
-    PROFILE_LINK,
+    PROFILE_LINKS,
     SIGN_IN_LINK,
     SIGN_UP_LINK,
 } from 'src/app/App.constants'
@@ -54,7 +53,7 @@ export default function Signin() {
                     token,
                 })
             )
-            navigate(PROFILE_LINK.to)
+            navigate(PROFILE_LINKS.INDEX.to)
         }
     }, [isSignInSuccess])
 

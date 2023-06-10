@@ -1,11 +1,11 @@
-import Bday from './Bday'
+import DateOfBirth from './DateOfBirth'
 import Gender from './Gender'
 import Orientation from './Orientation'
 import Pics from './Pics'
 import Zipcode from './Zipcode'
 
 export const MyProfile = {
-    Bday,
+    DateOfBirth,
     Gender,
     Orientation,
     Pics,

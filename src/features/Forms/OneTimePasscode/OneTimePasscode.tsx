@@ -3,12 +3,16 @@ import { Formik } from 'formik'
 import { Button, Col, Container, Form, Ratio, Row } from 'react-bootstrap'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
+import H2 from 'src/features/Elements/H2'
 import { useForgotMutation } from 'src/appState/authApi'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { initialValues, validationSchema } from './OneTimePasscode.schema'
-import { validate } from './OneTimePasscode.utils'
+import {
+    initialValues,
+    validate,
+    validationSchema,
+} from './OneTimePasscode.config'
 import { RESET_LINK } from 'src/app/App.constants'
-import H2 from 'src/features/Elements/H2'
+
 const DISABLE_TIME = 60
 
 export default function OneTimePasscode() {

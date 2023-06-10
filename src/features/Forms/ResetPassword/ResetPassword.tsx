@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react'
-import { LinkContainer } from 'react-router-bootstrap'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Formik } from 'formik'
+import {
+    initialValues,
+    validate,
+    validationSchema,
+} from './ResetPassword.config'
+import { LinkContainer } from 'react-router-bootstrap'
 import { Col, Container, Form, Row } from 'react-bootstrap'
-import { validationSchema, initialValues } from './ResetPassword.schema'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import NavLink from 'src/features/NavLink'
 import { useResetMutation } from 'src/appState/authApi'
-import { OTP_LINK, SIGN_IN_LINK } from 'src/app/App.constants'
-import { validate } from './ResetPassword.utils'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { SIGN_IN_LINK } from 'src/app/App.constants'
 
 export default function ResetPassword() {
     const location = useLocation()
