@@ -14,7 +14,12 @@ function Main() {
 export default function MyPicsPage() {
     return (
         <div className="myPicsPage" data-testid="myPicsPage">
-            <Layout isDarkTheme={false} hasLogo={true} main={<Main />} />
+            <Layout
+                isDarkTheme={false}
+                hasLogo={true}
+                main={<Main />}
+                progress={100}
+            />
         </div>
     )
 }

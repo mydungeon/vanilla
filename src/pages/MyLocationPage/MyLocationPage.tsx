@@ -14,7 +14,12 @@ function Main() {
 export default function MyLocationPage() {
     return (
         <div className="myLocationPage" data-testid="myLocationPage">
-            <Layout isDarkTheme={false} hasLogo={true} main={<Main />} />
+            <Layout
+                isDarkTheme={false}
+                hasLogo={true}
+                main={<Main />}
+                progress={40}
+            />
         </div>
     )
 }

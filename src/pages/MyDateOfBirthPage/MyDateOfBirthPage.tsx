@@ -14,7 +14,12 @@ function Main() {
 export default function MyDateOfBirthPage() {
     return (
         <div className="mydateofbirthpage" data-testid="mydateofbirthpage">
-            <Layout isDarkTheme={false} hasLogo={true} main={<Main />} />
+            <Layout
+                isDarkTheme={false}
+                hasLogo={true}
+                main={<Main />}
+                progress={20}
+            />
         </div>
     )
 }

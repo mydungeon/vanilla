@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Col, Container, Form, Row } from 'react-bootstrap'
 import NextButton from 'src/features/Buttons/NextButton'
@@ -9,7 +9,8 @@ export default function Pics() {
     const navigate = useNavigate()
     const [value, setValue] = useState(0)
 
-    function handleChange() {
+    function handleChange(e: any) {
+        console.log('change', e.target.files[0])
         setValue(value)
     }
 
@@ -20,8 +21,11 @@ export default function Pics() {
             state: { dob, gender, orientation, pic: value, zipCode },
         })
     }
-    console.log('value', value)
-    console.log('state', location.state)
+
+    useEffect(() => {
+        console.log('value', value)
+    }, [value])
+
     return (
         <div className="pics mb-3" data-testid="pics">
             <Form className="mb-3">
@@ -30,6 +34,7 @@ export default function Pics() {
                         <Col>
                             <Form.Group controlId="pics">
                                 <Form.Control
+                                    accept="image/png, image/gif, image/jpeg"
                                     size="lg"
                                     type="file"
                                     onChange={handleChange}

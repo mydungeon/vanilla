@@ -14,7 +14,12 @@ function Main() {
 export default function MyOrientationPage() {
     return (
         <div className="myOrientationPage" data-testid="myOrientationPage">
-            <Layout isDarkTheme={false} hasLogo={true} main={<Main />} />
+            <Layout
+                isDarkTheme={false}
+                hasLogo={true}
+                main={<Main />}
+                progress={80}
+            />
         </div>
     )
 }

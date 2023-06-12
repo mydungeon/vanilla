@@ -5,8 +5,14 @@ import Alert from 'src/features/Alert'
 import Header from 'src/features/Header'
 import Main from 'src/features/Main'
 import Footer from 'src/features/Footer'
+import ProgressBar from 'src/features/ProgressBar'
 
-export default function Layout({ hasLogo, isDarkTheme, main }: LayoutProps) {
+export default function Layout({
+    hasLogo,
+    isDarkTheme,
+    main,
+    progress,
+}: LayoutProps) {
     const [easterEgg, setEastEgg] = useState(false)
 
     function handleClick() {
@@ -18,6 +24,7 @@ export default function Layout({ hasLogo, isDarkTheme, main }: LayoutProps) {
             <Alert />
             <Container fluid className="d-flex flex-column vh-100">
                 <Header hasLogo={hasLogo} isDarkTheme={isDarkTheme} />
+                {progress && <ProgressBar progress={progress} />}
                 <Main easterEgg={easterEgg} main={main} />
                 <Footer isDarkTheme={isDarkTheme} handleClick={handleClick} />
             </Container>

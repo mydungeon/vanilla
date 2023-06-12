@@ -1,10 +1,9 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-// import { baseQuery } from 'src/appState/baseQuery'
+import { createApi } from '@reduxjs/toolkit/query/react'
+import { baseQuery } from 'src/appState/baseApi'
 
 export const profileApi = createApi({
     reducerPath: 'profileApi',
-    //TODO: import baseQuery with auth headers from ./baseQuery.ts
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+    baseQuery,
     endpoints: (builder) => ({
         createProfile: builder.mutation({
             query: (body: {

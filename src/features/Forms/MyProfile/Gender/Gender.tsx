@@ -4,7 +4,6 @@ import GenderProps from './Gender.types'
 import {
     Col,
     Container,
-    Form,
     Row,
     ToggleButton,
     ToggleButtonGroup,
@@ -15,7 +14,7 @@ import NextButton from 'src/features/Buttons/NextButton'
 export default function Gender({ children }: GenderProps) {
     const location = useLocation()
     const navigate = useNavigate()
-    const [value, setValue] = useState(0)
+    const [value, setValue] = useState('')
 
     function handleChange(val: any) {
         setValue(val)
@@ -28,7 +27,6 @@ export default function Gender({ children }: GenderProps) {
             state: { dob, gender: value, zipCode },
         })
     }
-    console.log('state', location.state)
 
     return (
         <div className="gender mb-3" data-testid="gender">
@@ -43,10 +41,10 @@ export default function Gender({ children }: GenderProps) {
                             type="radio"
                             value={value}
                         >
-                            <ToggleButton id="tbg-btn-2" value={1}>
+                            <ToggleButton id="tbg-btn-2" value="f">
                                 Woman
                             </ToggleButton>
-                            <ToggleButton id="tbg-btn-1" value={2}>
+                            <ToggleButton id="tbg-btn-1" value="m">
                                 Man
                             </ToggleButton>
                         </ToggleButtonGroup>

@@ -14,7 +14,12 @@ function Main() {
 export default function MyGenderPage() {
     return (
         <div className="myGenderPage" data-testid="myGenderPage">
-            <Layout isDarkTheme={false} hasLogo={true} main={<Main />} />
+            <Layout
+                isDarkTheme={false}
+                hasLogo={true}
+                main={<Main />}
+                progress={60}
+            />
         </div>
     )
 }
