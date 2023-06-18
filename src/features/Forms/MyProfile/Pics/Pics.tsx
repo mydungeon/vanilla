@@ -1,53 +1,79 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { Col, Container, Form, Row } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import { Form, Image, Stack } from 'react-bootstrap'
 import NextButton from 'src/features/Buttons/NextButton'
+import { useUploadFileMutation } from 'src/appState/fileApi'
 import { PROFILE_LINKS } from 'src/app/App.constants'
 
 export default function Pics() {
-    const location = useLocation()
     const navigate = useNavigate()
-    const [value, setValue] = useState(0)
+    const [file, setFile] = useState()
+    const [imageURL, setImageURL] = useState<string>()
+    const [
+        uploadFile,
+        {
+            data: uploadFileData,
+            isSuccess: isUploadFileSuccess,
+            isError: isUploadFileError,
+            error: uploadFileError,
+        },
+    ] = useUploadFileMutation()
 
     function handleChange(e: any) {
-        console.log('change', e.target.files[0])
-        setValue(value)
+        console.log('file', e.target.files[0])
+        setFile(e.target.files[0])
     }
 
-    async function handleNext() {
-        const { dob, gender, orientation, zipCode } = location?.state
-
-        navigate(PROFILE_LINKS.INDEX.to, {
-            state: { dob, gender, orientation, pic: value, zipCode },
-        })
+    async function handleSubmit(e: any) {
+        e.preventDefault()
+        if (file) {
+            let newFile = new FormData()
+            newFile.append('file', file)
+            console.log('newFile', Object.fromEntries(newFile))
+            await uploadFile(newFile)
+        }
     }
 
     useEffect(() => {
-        console.log('value', value)
-    }, [value])
+        if (!file) return
+        const newImageURL = URL.createObjectURL(file)
+        setImageURL(newImageURL)
+    }, [file])
+
+    useEffect(() => {
+        if (isUploadFileSuccess) {
+            navigate(PROFILE_LINKS.INDEX.to)
+        }
+    })
 
     return (
         <div className="pics mb-3" data-testid="pics">
-            <Form className="mb-3">
-                <Container fluid>
-                    <Row className="mb-5">
-                        <Col>
-                            <Form.Group controlId="pics">
-                                <Form.Control
-                                    accept="image/png, image/gif, image/jpeg"
-                                    size="lg"
-                                    type="file"
-                                    onChange={handleChange}
-                                />
-                            </Form.Group>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <NextButton handleNext={handleNext} text="Finish" />
-                        </Col>
-                    </Row>
-                </Container>
+            <Form onSubmit={handleSubmit} className="mb-3">
+                <Stack className="mb-3" gap={3}>
+                    <div className="m-auto">
+                        {imageURL && (
+                            <Image
+                                alt="myProfilePic"
+                                className="mb-4 shadow-sm border-primary"
+                                src={imageURL}
+                                width="200"
+                                rounded
+                                fluid
+                            />
+                        )}
+                    </div>
+                    <div className="m-auto">
+                        <Form.Group controlId="pics">
+                            <Form.Control
+                                name="image"
+                                size="lg"
+                                type="file"
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
+                    </div>
+                </Stack>
+                <NextButton text="Finish" type="submit" />
             </Form>
         </div>
     )

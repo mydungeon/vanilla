@@ -7,7 +7,7 @@ import {
     validationSchema,
 } from './ResetPassword.config'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Col, Container, Form, Row } from 'react-bootstrap'
+import { Form, Stack } from 'react-bootstrap'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import NavLink from 'src/features/NavLink'
@@ -40,6 +40,7 @@ export default function ResetPassword() {
             navigate(SIGN_IN_LINK.to)
         }
     }, [isResetSuccess])
+
     return (
         <div className="forgotPassword" data-testid="forgotPassword">
             <Formik
@@ -57,78 +58,63 @@ export default function ResetPassword() {
                     touched,
                     values,
                 }) => (
-                    <Container>
-                        <Row className="justify-content-center" xs={12}>
-                            <Col>
-                                <Form
-                                    noValidate
-                                    className="w-100 text-align-start"
-                                    onSubmit={handleSubmit}
-                                >
-                                    <TextInput
-                                        controlId="password"
-                                        error={errors?.password}
-                                        isInvalid={Boolean(
-                                            touched?.password &&
-                                                errors?.password
-                                        )}
-                                        isValid={Boolean(
-                                            touched?.password &&
-                                                !errors?.password
-                                        )}
-                                        name="password"
-                                        onChange={handleChange}
-                                        placeholder="New Password"
-                                        type="password"
-                                        value={values.password}
+                    <Form
+                        noValidate
+                        className="w-100 text-align-start"
+                        onSubmit={handleSubmit}
+                    >
+                        <Stack>
+                            <TextInput
+                                controlId="password"
+                                error={errors?.password}
+                                isInvalid={Boolean(
+                                    touched?.password && errors?.password
+                                )}
+                                isValid={Boolean(
+                                    touched?.password && !errors?.password
+                                )}
+                                name="password"
+                                onChange={handleChange}
+                                placeholder="New Password"
+                                type="password"
+                                value={values.password}
+                            />
+                            <TextInput
+                                controlId="passwordConfirm"
+                                error={errors?.passwordConfirm}
+                                isInvalid={Boolean(
+                                    touched?.passwordConfirm &&
+                                        errors?.passwordConfirm
+                                )}
+                                isValid={Boolean(
+                                    touched?.passwordConfirm &&
+                                        !errors?.passwordConfirm
+                                )}
+                                name="passwordConfirm"
+                                onChange={handleChange}
+                                placeholder="Confirm New Password"
+                                type="password"
+                                value={values.passwordConfirm}
+                            />
+                        </Stack>
+                        <Stack direction="horizontal">
+                            <div className="p-2 m-auto">
+                                <ButtonInput
+                                    text={`Reset my password`}
+                                    disabled={!(dirty && isValid)}
+                                />
+                            </div>
+                            <div className="p-2 m-auto">
+                                <LinkContainer to={SIGN_IN_LINK.to}>
+                                    <NavLink
+                                        hasBorder={false}
+                                        text={SIGN_IN_LINK.text}
+                                        to={SIGN_IN_LINK.to}
                                     />
-                                    <TextInput
-                                        controlId="passwordConfirm"
-                                        error={errors?.passwordConfirm}
-                                        isInvalid={Boolean(
-                                            touched?.passwordConfirm &&
-                                                errors?.passwordConfirm
-                                        )}
-                                        isValid={Boolean(
-                                            touched?.passwordConfirm &&
-                                                !errors?.passwordConfirm
-                                        )}
-                                        name="passwordConfirm"
-                                        onChange={handleChange}
-                                        placeholder="Confirm New Password"
-                                        type="password"
-                                        value={values.passwordConfirm}
-                                    />
-                                    <Container>
-                                        <Row>
-                                            <Col xs={8}>
-                                                <ButtonInput
-                                                    text={`Reset my password`}
-                                                    disabled={
-                                                        !(dirty && isValid)
-                                                    }
-                                                />
-                                            </Col>
-                                            <Col
-                                                xs={4}
-                                                className="align-self-center"
-                                            >
-                                                <LinkContainer
-                                                    to={SIGN_IN_LINK.to}
-                                                >
-                                                    <NavLink
-                                                        hasBorder={false}
-                                                        text={SIGN_IN_LINK.text}
-                                                        to={SIGN_IN_LINK.to}
-                                                    />
-                                                </LinkContainer>
-                                            </Col>
-                                        </Row>
-                                    </Container>
-                                </Form>
-                            </Col>
-                        </Row>
-                    </Container>
+                                </LinkContainer>
+                            </div>
+                        </Stack>
+                    </Form>
                 )}
             </Formik>
         </div>

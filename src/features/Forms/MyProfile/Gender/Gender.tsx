@@ -1,13 +1,7 @@
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import GenderProps from './Gender.types'
-import {
-    Col,
-    Container,
-    Row,
-    ToggleButton,
-    ToggleButtonGroup,
-} from 'react-bootstrap'
+import { Stack, ToggleButton, ToggleButtonGroup } from 'react-bootstrap'
 import { PROFILE_LINKS } from 'src/app/App.constants'
 import NextButton from 'src/features/Buttons/NextButton'
 
@@ -30,33 +24,25 @@ export default function Gender({ children }: GenderProps) {
 
     return (
         <div className="gender mb-3" data-testid="gender">
-            <Container fluid>
-                <Row className="mb-5">
-                    <Col></Col>
-                    <Col>
-                        <ToggleButtonGroup
-                            name="gender"
-                            onChange={handleChange}
-                            size="lg"
-                            type="radio"
-                            value={value}
-                        >
-                            <ToggleButton id="tbg-btn-2" value="f">
-                                Woman
-                            </ToggleButton>
-                            <ToggleButton id="tbg-btn-1" value="m">
-                                Man
-                            </ToggleButton>
-                        </ToggleButtonGroup>
-                    </Col>
-                    <Col></Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <NextButton handleNext={handleNext} text="Next" />
-                    </Col>
-                </Row>
-            </Container>
+            <Stack className="mb-3" direction="horizontal" gap={3}>
+                <ToggleButtonGroup
+                    className="m-auto"
+                    name="gender"
+                    onChange={handleChange}
+                    size="lg"
+                    type="radio"
+                    value={value}
+                >
+                    <ToggleButton id="tbg-btn-2" value="f">
+                        Woman
+                    </ToggleButton>
+                    <ToggleButton id="tbg-btn-1" value="m">
+                        Man
+                    </ToggleButton>
+                </ToggleButtonGroup>
+            </Stack>
+
+            <NextButton handleNext={handleNext} text="Next" />
         </div>
     )
 }

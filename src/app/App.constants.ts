@@ -61,7 +61,6 @@ export const PROFILE_LINKS = {
     },
 }
 export const RESET_LINK = { text: 'Reset password?', to: '/reset' }
-export const SEARCH_LINK = { text: 'Search', to: '/search' }
 export const SIGN_IN_LINK = { text: 'Sign in', to: '/signin' }
 export const SIGN_UP_LINK = { text: 'Sign up', to: '/signup' }
 
@@ -69,7 +68,7 @@ const APP_LINKS = [HOME_LINK, BLOG_LINK]
 
 const AUTH_LINKS = [SIGN_IN_LINK, SIGN_UP_LINK]
 
-const PROTECTED_LINKS = [ADMIN_LINK, PROFILE_LINKS.DOB, SEARCH_LINK]
+const PROTECTED_LINKS = [ADMIN_LINK, PROFILE_LINKS.INDEX]
 
 export {
     APP_LINKS,

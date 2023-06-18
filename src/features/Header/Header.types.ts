@@ -1,4 +1,4 @@
 export default interface HeaderProps {
-    hasLogo: boolean
+    showLogo: boolean
     isDarkTheme: boolean
 }

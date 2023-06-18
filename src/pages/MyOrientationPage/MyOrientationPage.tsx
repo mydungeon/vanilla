@@ -1,25 +1,16 @@
 import React from 'react'
 import { MyProfile } from 'src/features/Forms'
-import Layout from 'src/features/Layout'
+import Layouts from 'src/features/Layouts'
 import Page from 'src/features/Page'
-
-function Main() {
-    return (
-        <Page classNames="text-center" h1Text="I am seeking">
-            <MyProfile.Orientation />
-        </Page>
-    )
-}
 
 export default function MyOrientationPage() {
     return (
         <div className="myOrientationPage" data-testid="myOrientationPage">
-            <Layout
-                isDarkTheme={false}
-                hasLogo={true}
-                main={<Main />}
-                progress={80}
-            />
+            <Layouts.Row1Col3>
+                <Page classNames="text-center" h1Text="I am seeking">
+                    <MyProfile.Orientation />
+                </Page>
+            </Layouts.Row1Col3>
         </div>
     )
 }

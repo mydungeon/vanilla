@@ -5,7 +5,7 @@ import Toggle from './components/Toggle'
 import NavMenu from './components/NavMenu'
 import NavLogo from './components/NavLogo'
 
-export default function NavBar({ hasLogo, isDarkTheme }: NavBarProps) {
+export default function NavBar({ showLogo, isDarkTheme }: NavBarProps) {
     const [isToggled, setIsToggled] = useState(false)
     const handleSetIsToggled = () => setIsToggled(!isToggled)
     const theme = isDarkTheme ? 'dark' : 'light'
@@ -19,7 +19,7 @@ export default function NavBar({ hasLogo, isDarkTheme }: NavBarProps) {
                 variant={theme}
                 onToggle={handleSetIsToggled}
             >
-                <NavLogo hasLogo={hasLogo} />
+                <NavLogo showLogo={showLogo} />
                 <Toggle isToggled={isToggled} />
                 <NavMenu isToggled={isToggled} />
             </SiteNav>

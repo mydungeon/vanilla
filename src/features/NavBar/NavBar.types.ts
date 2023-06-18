@@ -1,4 +1,4 @@
 export default interface NavBarProps {
     isDarkTheme: boolean
-    hasLogo: boolean
+    showLogo: boolean
 }

@@ -1,21 +1,24 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { rtkQueryErrorLogger } from 'src/appMiddleware/errors'
+import alertsReducer from 'src/appState/alertsSlice'
 import authReducer from 'src/appState/authSlice'
 import { authApi } from 'src/appState/authApi'
+import { fileApi } from 'src/appState/fileApi'
 import { profileApi } from 'src/appState/profileApi'
-import alertsReducer from 'src/appState/alertsSlice'
-import { setupListeners } from '@reduxjs/toolkit/dist/query'
 
 export const store = configureStore({
     reducer: {
+        alerts: alertsReducer,
         auth: authReducer,
         [authApi.reducerPath]: authApi.reducer,
+        [fileApi.reducerPath]: fileApi.reducer,
         [profileApi.reducerPath]: profileApi.reducer,
-        alerts: alertsReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
             authApi.middleware,
+            fileApi.middleware,
             profileApi.middleware,
             rtkQueryErrorLogger
         ),

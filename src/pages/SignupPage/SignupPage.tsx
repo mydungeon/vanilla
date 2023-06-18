@@ -1,20 +1,16 @@
 import React from 'react'
 import { SignupForm } from 'src/features/Forms'
-import Layout from 'src/features/Layout'
+import Layouts from 'src/features/Layouts'
 import Page from 'src/features/Page'
-
-function Main() {
-    return (
-        <Page h1Text="Sign up">
-            <SignupForm />
-        </Page>
-    )
-}
 
 export default function SignupPage() {
     return (
         <div className="signupPage" data-testid="signupPage">
-            <Layout isDarkTheme={false} hasLogo={true} main={<Main />} />
+            <Layouts.Row1Col3>
+                <Page h1Text="Sign up">
+                    <SignupForm />
+                </Page>
+            </Layouts.Row1Col3>
         </div>
     )
 }

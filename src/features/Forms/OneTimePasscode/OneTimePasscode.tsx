@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Formik } from 'formik'
-import { Button, Col, Container, Form, Ratio, Row } from 'react-bootstrap'
+import { Button, Form, Ratio, Stack } from 'react-bootstrap'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import H2 from 'src/features/Elements/H2'
@@ -11,15 +11,14 @@ import {
     validate,
     validationSchema,
 } from './OneTimePasscode.config'
-import { RESET_LINK } from 'src/app/App.constants'
+import { RESET_LINK, SIGN_IN_LINK } from 'src/app/App.constants'
 
 const DISABLE_TIME = 60
 
 export default function OneTimePasscode() {
     const location = useLocation()
     const navigate = useNavigate()
-
-    const [otp, setOtp] = useState(location.state.otp)
+    const [otp, setOtp] = useState(location?.state?.otp)
     const [disabledTime, setDisabledTime] = useState(DISABLE_TIME)
     const [disabled, setDisabled] = useState(true)
     const [
@@ -31,7 +30,7 @@ export default function OneTimePasscode() {
             error: forgotError,
         },
     ] = useForgotMutation()
-    const { email } = location?.state
+    const { email } = location?.state || {}
 
     const cta = !disabled
         ? `Time is expired`
@@ -73,6 +72,9 @@ export default function OneTimePasscode() {
     }
 
     useEffect(() => {
+        if (!location.state) {
+            navigate(SIGN_IN_LINK.to)
+        }
         handleRefresh()
     }, [isForgotSuccess, forgotData])
 
@@ -114,72 +116,52 @@ export default function OneTimePasscode() {
                         className="w-100 text-align-start"
                         onSubmit={handleSubmit}
                     >
-                        <Container>
-                            <Row>
-                                {['otp-0', 'otp-1', 'otp-2', 'otp-3'].map(
-                                    (name, i) => (
-                                        <Col key={i}>
-                                            <Ratio aspectRatio={'1x1'}>
-                                                <TextInput
-                                                    controlId={name}
-                                                    error={
-                                                        (errors as any)[name]
-                                                    }
-                                                    formControlClasses="h-100 text-center"
-                                                    isInvalid={Boolean(
-                                                        (touched as any)[
-                                                            name
-                                                        ] &&
-                                                            (errors as any)[
-                                                                name
-                                                            ]
-                                                    )}
-                                                    isValid={Boolean(
-                                                        (touched as any)[
-                                                            name
-                                                        ] &&
-                                                            !(errors as any)[
-                                                                name
-                                                            ]
-                                                    )}
-                                                    maxLength={1}
-                                                    name={name}
-                                                    onChange={handleChange}
-                                                    placeholder=""
-                                                    type="string"
-                                                    value={
-                                                        (values as any)[name]
-                                                    }
-                                                />
-                                            </Ratio>
-                                        </Col>
-                                    )
-                                )}
-                            </Row>
-                            <Container>
-                                <Row className="mt-3">
-                                    <Col xs={8}>
-                                        <ButtonInput
-                                            text={`Reset my password`}
-                                            disabled={
-                                                !disabled || !(dirty && isValid)
-                                            }
+                        <Stack className="pb-4" direction="horizontal" gap={5}>
+                            {['otp-0', 'otp-1', 'otp-2', 'otp-3'].map(
+                                (name, i) => (
+                                    <Ratio aspectRatio={'1x1'} key={i}>
+                                        <TextInput
+                                            controlId={name}
+                                            error={(errors as any)[name]}
+                                            formControlClasses="h-100 text-center"
+                                            isInvalid={Boolean(
+                                                (touched as any)[name] &&
+                                                    (errors as any)[name]
+                                            )}
+                                            isValid={Boolean(
+                                                (touched as any)[name] &&
+                                                    !(errors as any)[name]
+                                            )}
+                                            maxLength={1}
+                                            name={name}
+                                            onChange={handleChange}
+                                            placeholder=""
+                                            type="string"
+                                            value={(values as any)[name]}
                                         />
-                                    </Col>
-                                    <Col xs={4} className="align-self-center">
-                                        <Button
-                                            className="mx-auto "
-                                            onClick={handleResendCode}
-                                            variant="link"
-                                            size="lg"
-                                            disabled={disabled}
-                                        >
-                                            Resend OTP
-                                        </Button>
-                                    </Col>
-                                </Row>
-                            </Container>
-                        </Container>
+                                    </Ratio>
+                                )
+                            )}
+                        </Stack>
+                        <Stack direction="horizontal">
+                            <div className="p-2 m-auto">
+                                <ButtonInput
+                                    text={`Reset my password`}
+                                    disabled={!disabled || !(dirty && isValid)}
+                                />
+                            </div>
+                            <div className="p-2 m-auto">
+                                <Button
+                                    className="mx-auto "
+                                    onClick={handleResendCode}
+                                    variant="link"
+                                    size="lg"
+                                    disabled={disabled}
+                                >
+                                    Resend OTP
+                                </Button>
+                            </div>
+                        </Stack>
                     </Form>
                 )}
             </Formik>

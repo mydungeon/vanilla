@@ -11,15 +11,19 @@ export const profileApi = createApi({
                 gender: string
                 orientation: string
                 zipCode: string
-            }) => {
-                return {
-                    url: '/profile/create',
-                    method: 'post',
-                    body,
-                }
-            },
+            }) => ({
+                url: '/profile/create',
+                method: 'post',
+                body,
+            }),
+        }),
+        getProfile: builder.query({
+            query: ({ id }) => ({
+                url: `/profile/${id}`,
+                method: 'get',
+            }),
         }),
     }),
 })
 
-export const { useCreateProfileMutation } = profileApi
+export const { useCreateProfileMutation, useGetProfileQuery } = profileApi

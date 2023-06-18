@@ -3,7 +3,6 @@ import Routes from 'src/routes/Routes'
 // import useAuth from 'src/hooks/useAuth'
 
 function App() {
-    // useAuth()
     return (
         <div className="App">
             <Routes />

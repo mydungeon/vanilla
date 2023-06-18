@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Formik } from 'formik'
-import { Col, Container, Form, Row } from 'react-bootstrap'
+import { Form, Stack } from 'react-bootstrap'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import {
@@ -66,35 +66,27 @@ export default function ForgotPassword() {
                         className="w-100 text-align-start"
                         onSubmit={handleSubmit}
                     >
-                        <Container>
-                            <Row className="justify-content-center" xs={12}>
-                                <Col>
-                                    <TextInput
-                                        controlId="emailAddress"
-                                        error={errors?.email}
-                                        isInvalid={Boolean(
-                                            touched?.email && errors?.email
-                                        )}
-                                        isValid={Boolean(
-                                            touched?.email && !errors?.email
-                                        )}
-                                        name="email"
-                                        onChange={handleChange}
-                                        placeholder="Email"
-                                        type="email"
-                                        value={values.email}
-                                    />
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <ButtonInput
-                                        text={`Email me a One Time Password`}
-                                        disabled={!(dirty && isValid)}
-                                    />
-                                </Col>
-                            </Row>
-                        </Container>
+                        <Stack>
+                            <TextInput
+                                controlId="emailAddress"
+                                error={errors?.email}
+                                isInvalid={Boolean(
+                                    touched?.email && errors?.email
+                                )}
+                                isValid={Boolean(
+                                    touched?.email && !errors?.email
+                                )}
+                                name="email"
+                                onChange={handleChange}
+                                placeholder="Email"
+                                type="email"
+                                value={values.email}
+                            />
+                        </Stack>
+                        <ButtonInput
+                            text={`Email me a One Time Password`}
+                            disabled={!(dirty && isValid)}
+                        />
                     </Form>
                 )}
             </Formik>

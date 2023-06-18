@@ -3,6 +3,6 @@ import '@testing-library/jest-dom'
 import NavLogo from './NavLogo'
 
 test('loads and displays NavLogo component', async () => {
-    render(<NavLogo hasLogo={false} />)
+    render(<NavLogo showLogo={false} />)
     expect(screen.getByTestId('navlogo')).toBeTruthy()
 })

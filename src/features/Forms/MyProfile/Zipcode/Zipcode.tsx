@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Formik } from 'formik'
-import { Col, Container, Form, Row } from 'react-bootstrap'
+import { Form, Stack } from 'react-bootstrap'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import { initialValues, validate, validationSchema } from './Zipcode.config'
 import { PROFILE_LINKS } from 'src/app/App.constants'
@@ -38,39 +38,30 @@ export default function Zipcode() {
                     values,
                 }) => (
                     <Form noValidate className="mb-3" onSubmit={handleSubmit}>
-                        <Container fluid>
-                            <Row className="mb-5">
-                                <Col></Col>
-                                <Col>
-                                    <Form.Control
-                                        isInvalid={Boolean(
-                                            touched?.zipCode && errors?.zipCode
-                                        )}
-                                        isValid={Boolean(
-                                            touched?.zipCode && !errors?.zipCode
-                                        )}
-                                        minLength={5}
-                                        maxLength={5}
-                                        name="zipCode"
-                                        onChange={handleChange}
-                                        pattern='pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$"'
-                                        placeholder="Zipcode"
-                                        size="lg"
-                                        type="text"
-                                        value={values.zipCode}
-                                    />
-                                </Col>
-                                <Col></Col>
-                            </Row>
-                            <Row className="mt-3">
-                                <Col>
-                                    <ButtonInput
-                                        text="Next"
-                                        disabled={!(dirty && isValid)}
-                                    />
-                                </Col>
-                            </Row>
-                        </Container>
+                        <Stack className="mb-3" direction="horizontal" gap={3}>
+                            <Form.Control
+                                className="w-50 m-auto"
+                                isInvalid={Boolean(
+                                    touched?.zipCode && errors?.zipCode
+                                )}
+                                isValid={Boolean(
+                                    touched?.zipCode && !errors?.zipCode
+                                )}
+                                minLength={5}
+                                maxLength={5}
+                                name="zipCode"
+                                onChange={handleChange}
+                                pattern='pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$"'
+                                placeholder="Zipcode"
+                                size="lg"
+                                type="text"
+                                value={values.zipCode}
+                            />
+                        </Stack>
+                        <ButtonInput
+                            text="Next"
+                            disabled={!(dirty && isValid)}
+                        />
                     </Form>
                 )}
             </Formik>

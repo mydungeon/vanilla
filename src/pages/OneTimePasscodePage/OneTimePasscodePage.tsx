@@ -1,20 +1,16 @@
 import React from 'react'
 import { OneTimePasscodeForm } from 'src/features/Forms'
-import Layout from 'src/features/Layout'
+import Layouts from 'src/features/Layouts'
 import Page from 'src/features/Page'
-
-function Main() {
-    return (
-        <Page h1Text="Enter Your Code">
-            <OneTimePasscodeForm />
-        </Page>
-    )
-}
 
 export default function OneTimePasscodePage() {
     return (
         <div className="oneTimePasscodePage" data-testid="oneTimePasscodePage">
-            <Layout isDarkTheme={false} hasLogo={true} main={<Main />} />
+            <Layouts.Row1Col3>
+                <Page h1Text="Enter Your Code">
+                    <OneTimePasscodeForm />
+                </Page>
+            </Layouts.Row1Col3>
         </div>
     )
 }

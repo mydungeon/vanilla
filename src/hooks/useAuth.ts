@@ -12,7 +12,7 @@ const useAuth = () => {
         if (user) {
             setIsLoggedIn(true)
             setUser(user)
-            dispatch(setUserAndToken(JSON.parse(user)))
+            dispatch(setUserAndToken(user))
         }
     }, [])
 

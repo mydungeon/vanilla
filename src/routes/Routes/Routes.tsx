@@ -24,7 +24,6 @@ const ProfilePage = lazy(() => import('src/pages/ProfilePage'))
 const ResetPasswordPage = lazy(() => import('src/pages/ResetPasswordPage'))
 const SigninPage = lazy(() => import('src/pages/SigninPage'))
 const SignupPage = lazy(() => import('src/pages/SignupPage'))
-const SearchPage = lazy(() => import('src/pages/SearchPage'))
 
 function Loading() {
     console.log('isLoading')
@@ -93,14 +92,6 @@ const router = createBrowserRouter(
                 element={
                     <Suspense fallback={<Loading />}>
                         <ResetPasswordPage />
-                    </Suspense>
-                }
-            />
-            <Route
-                path="search"
-                element={
-                    <Suspense fallback={<Loading />}>
-                        <SearchPage />
                     </Suspense>
                 }
             />

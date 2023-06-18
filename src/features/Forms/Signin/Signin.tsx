@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useAppDispatch } from 'src/hooks'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Formik } from 'formik'
-import { Col, Container, Form, Row } from 'react-bootstrap'
+import { Form, Stack } from 'react-bootstrap'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
 import NavLink from 'src/features/NavLink'
@@ -43,10 +43,10 @@ export default function Signin() {
     useEffect(() => {
         if (isSignInSuccess) {
             const {
-                result: { name },
+                result: { _id, name },
                 token,
             } = signInData
-            setUserInLocalStorage(name, token)
+            setUserInLocalStorage(_id, name, token)
             dispatch(
                 setUserAndToken({
                     name,
@@ -58,7 +58,7 @@ export default function Signin() {
     }, [isSignInSuccess])
 
     return (
-        <div className="signin" data-testid="signin">
+        <div className="signin text-center" data-testid="signin">
             <Formik
                 validationSchema={validationSchema}
                 validate={validate}
@@ -74,89 +74,68 @@ export default function Signin() {
                     touched,
                     values,
                 }) => (
-                    <Container>
-                        <Row className="justify-content-center" xs={12}>
-                            <Col>
-                                <Form
-                                    noValidate
-                                    className="w-100 text-align-start"
-                                    onSubmit={handleSubmit}
-                                >
-                                    <TextInput
-                                        controlId="emailAddress"
-                                        error={errors?.email}
-                                        isInvalid={Boolean(
-                                            touched?.email && errors?.email
-                                        )}
-                                        isValid={Boolean(
-                                            touched?.email && !errors?.email
-                                        )}
-                                        name="email"
-                                        onChange={handleChange}
-                                        placeholder="Email"
-                                        type="email"
-                                        value={values.email}
+                    <Form
+                        noValidate
+                        className="w-100 text-align-start"
+                        onSubmit={handleSubmit}
+                    >
+                        <Stack>
+                            <TextInput
+                                controlId="emailAddress"
+                                error={errors?.email}
+                                isInvalid={Boolean(
+                                    touched?.email && errors?.email
+                                )}
+                                isValid={Boolean(
+                                    touched?.email && !errors?.email
+                                )}
+                                name="email"
+                                onChange={handleChange}
+                                placeholder="Email"
+                                type="email"
+                                value={values.email}
+                            />
+                            <TextInput
+                                controlId="password"
+                                error={errors?.password}
+                                isInvalid={Boolean(
+                                    touched?.password && errors?.password
+                                )}
+                                isValid={Boolean(
+                                    touched?.password && !errors?.password
+                                )}
+                                name="password"
+                                onChange={handleChange}
+                                placeholder="Password"
+                                type="password"
+                                value={values.password}
+                            />
+                        </Stack>
+                        <Stack direction="horizontal">
+                            <div className="p-2 m-auto">
+                                <ButtonInput
+                                    text={SIGN_IN_LINK.text}
+                                    disabled={!(dirty && isValid)}
+                                />
+                            </div>
+                            <div className="p-2 m-auto">
+                                <LinkContainer to={FORGOT_LINK.to}>
+                                    <NavLink
+                                        hasBorder={false}
+                                        text={FORGOT_LINK.text}
+                                        to={FORGOT_LINK.to}
                                     />
-                                    <TextInput
-                                        controlId="password"
-                                        error={errors?.password}
-                                        isInvalid={Boolean(
-                                            touched?.password &&
-                                                errors?.password
-                                        )}
-                                        isValid={Boolean(
-                                            touched?.password &&
-                                                !errors?.password
-                                        )}
-                                        name="password"
-                                        onChange={handleChange}
-                                        placeholder="Password"
-                                        type="password"
-                                        value={values.password}
-                                    />
-                                    <Container>
-                                        <Row>
-                                            <Col xs={5}>
-                                                <ButtonInput
-                                                    text={SIGN_IN_LINK.text}
-                                                    disabled={
-                                                        !(dirty && isValid)
-                                                    }
-                                                />
-                                            </Col>
-                                            <Col
-                                                xs={7}
-                                                className="align-self-center"
-                                            >
-                                                <LinkContainer
-                                                    to={FORGOT_LINK.to}
-                                                >
-                                                    <NavLink
-                                                        hasBorder={false}
-                                                        text={FORGOT_LINK.text}
-                                                        to={FORGOT_LINK.to}
-                                                    />
-                                                </LinkContainer>
-                                            </Col>
-                                        </Row>
-                                        <Row className="text-center pt-3">
-                                            <Col xs={12}>
-                                                <LinkContainer
-                                                    to={SIGN_UP_LINK.to}
-                                                >
-                                                    <NavLink
-                                                        hasBorder={false}
-                                                        text={SIGN_UP_LINK.text}
-                                                        to={SIGN_UP_LINK.to}
-                                                    />
-                                                </LinkContainer>
-                                            </Col>
-                                        </Row>
-                                    </Container>
-                                </Form>
-                            </Col>
-                        </Row>
-                    </Container>
+                                </LinkContainer>
+                            </div>
+                        </Stack>
+                        <LinkContainer to={SIGN_UP_LINK.to}>
+                            <NavLink
+                                hasBorder={false}
+                                text={SIGN_UP_LINK.text}
+                                to={SIGN_UP_LINK.to}
+                            />
+                        </LinkContainer>
+                    </Form>
                 )}
             </Formik>
         </div>

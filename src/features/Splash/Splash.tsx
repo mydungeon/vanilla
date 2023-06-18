@@ -1,6 +1,6 @@
 import React from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Button, Col, Container, Row } from 'react-bootstrap'
+import { Button, Card, Stack } from 'react-bootstrap'
 import Logo from 'src/icons/Logo'
 import SplashProps from './Splash.types'
 import Tagline from 'src/features/Tagline'
@@ -9,15 +9,15 @@ import { TAGLINES } from 'src/app/App.constants'
 export default function Splash({ children }: SplashProps) {
     return (
         <div className="splash" data-testid="splash">
-            <Container fluid className="w-100">
-                <Row>
-                    <Col>
-                        <Logo />
-                        <Tagline taglines={TAGLINES} />
-                    </Col>
-                </Row>
-                <Row className="mt-3 text-center">
-                    <Col>
+            <Card className="bg-transparent border-0 text-center">
+                <Card.Header className="bg-transparent border-0">
+                    <Logo />
+                </Card.Header>
+                <Card.Body>
+                    <Tagline taglines={TAGLINES} />
+                </Card.Body>
+                <Card.Footer className="bg-transparent border-0">
+                    <Stack direction="horizontal">
                         <LinkContainer to="signup">
                             <Button
                                 className="mx-auto"
@@ -27,8 +27,6 @@ export default function Splash({ children }: SplashProps) {
                                 Sign up
                             </Button>
                         </LinkContainer>
-                    </Col>
-                    <Col>
                         <LinkContainer to="signin">
                             <Button
                                 className="mx-auto"
@@ -38,9 +36,9 @@ export default function Splash({ children }: SplashProps) {
                                 Sign in
                             </Button>
                         </LinkContainer>
-                    </Col>
-                </Row>
-            </Container>
+                    </Stack>
+                </Card.Footer>
+            </Card>
         </div>
     )
 }

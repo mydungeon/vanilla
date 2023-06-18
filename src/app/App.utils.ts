@@ -1,12 +1,13 @@
 export function getUserFromLocalStorage() {
     const user = localStorage.getItem('user')
-    return user
+    return JSON.parse(user!)
 }
 
-export function setUserInLocalStorage(name: string, token: string) {
+export function setUserInLocalStorage(id: string, name: string, token: string) {
     localStorage.setItem(
         'user',
         JSON.stringify({
+            id,
             name,
             token,
         })

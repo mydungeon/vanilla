@@ -1,3 +1,3 @@
 export default interface NavLogoProps {
-    hasLogo: boolean
+    showLogo: boolean
 }

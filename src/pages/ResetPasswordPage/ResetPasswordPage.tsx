@@ -1,20 +1,16 @@
 import React from 'react'
 import { ResetPasswordForm } from 'src/features/Forms'
-import Layout from 'src/features/Layout'
+import Layouts from 'src/features/Layouts'
 import Page from 'src/features/Page'
-
-function Main() {
-    return (
-        <Page h1Text="Reset password">
-            <ResetPasswordForm />
-        </Page>
-    )
-}
 
 export default function ResetPasswordPage() {
     return (
         <div className="resetPasswordPage" data-testid="resetPasswordPage">
-            <Layout isDarkTheme={false} hasLogo={true} main={<Main />} />
+            <Layouts.Row1Col3>
+                <Page h1Text="Reset password">
+                    <ResetPasswordForm />
+                </Page>
+            </Layouts.Row1Col3>
         </div>
     )
 }

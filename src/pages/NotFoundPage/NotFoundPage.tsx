@@ -1,19 +1,13 @@
 import React from 'react'
-import { H1 } from 'src/features/Elements'
-import Layout from 'src/features/Layout'
+import Layouts from 'src/features/Layouts'
+import Page from 'src/features/Page'
 
 export default function NotFoundPage() {
     return (
         <div className="notFoundPage" data-testid="notFoundPage">
-            <Layout
-                isDarkTheme={false}
-                hasLogo={true}
-                main={
-                    <div className="text-center">
-                        <H1 text="Sorry...Page Not Found" />
-                    </div>
-                }
-            />
+            <Layouts.Row1Col3>
+                <Page h1Text="Sorry...Page Not Found" />
+            </Layouts.Row1Col3>
         </div>
     )
 }
