@@ -20,7 +20,6 @@ export default function Pics() {
     ] = useUploadFileMutation()
 
     function handleChange(e: any) {
-        console.log('file', e.target.files[0])
         setFile(e.target.files[0])
     }
 
