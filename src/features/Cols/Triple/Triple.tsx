@@ -1,7 +1,7 @@
 import React from 'react'
 import TripleProps from './Triple.types'
-import './Triple.styles.scss'
 import { Col } from 'react-bootstrap'
+import './Triple.styles.scss'
 
 export default function Triple({ left, children, right }: TripleProps) {
     return (

@@ -58,9 +58,11 @@
 }
 .border-top,
 .border-top.border-primary,
-.border-bottom.border-primary {
+.border-bottom.border-primary
+ {
     border-color: map-get($colors, pink) !important;
 }
+
 .form-text,
 label,
 .form-lable {

@@ -6,11 +6,11 @@ import Profile from 'src/features/Profile'
 export default function ProfilePage() {
     return (
         <div className="profilePage" data-testid="profilePage">
-            <Layouts.Row1Col3>
-                <Page h1Text="My Profile">
+            <Layouts.Row1Col3TopAligned>
+                <Page>
                     <Profile />
                 </Page>
-            </Layouts.Row1Col3>
+            </Layouts.Row1Col3TopAligned>
         </div>
     )
 }

@@ -1,2 +1,3 @@
 import Triple from './Triple'
-export const Cols = { Triple }
+import TripleWithBorder from './TripleWithBorder'
+export const Cols = { Triple, TripleWithBorder }
