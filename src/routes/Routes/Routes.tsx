@@ -6,7 +6,7 @@ import {
     RouterProvider,
 } from 'react-router-dom'
 import ProtectedRoute from '../ProtectedRoute'
-import heartPreloader from 'src/assets/gif/heart-preloader.gif'
+import LoadingPage from 'src/pages/LoadingPage'
 import NotFoundPage from 'src/pages/NotFoundPage'
 import MyDateOfBirthPage from 'src/pages/MyDateOfBirthPage'
 import MyLocationPage from 'src/pages/MyLocationPage'
@@ -25,22 +25,13 @@ const ResetPasswordPage = lazy(() => import('src/pages/ResetPasswordPage'))
 const SigninPage = lazy(() => import('src/pages/SigninPage'))
 const SignupPage = lazy(() => import('src/pages/SignupPage'))
 
-function Loading() {
-    console.log('isLoading')
-    return (
-        <div className="preloader">
-            <img src={heartPreloader} alt="loading..." />
-        </div>
-    )
-}
-
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
             <Route
                 index
                 element={
-                    <Suspense fallback={<Loading />}>
+                    <Suspense fallback={<LoadingPage />}>
                         <HomePage />
                     </Suspense>
                 }
@@ -49,7 +40,7 @@ const router = createBrowserRouter(
                 <Route
                     path="admin"
                     element={
-                        <Suspense fallback={<Loading />}>
+                        <Suspense fallback={<LoadingPage />}>
                             <AdminPage />
                         </Suspense>
                     }
@@ -57,7 +48,7 @@ const router = createBrowserRouter(
                 <Route
                     path="profile"
                     element={
-                        <Suspense fallback={<Loading />}>
+                        <Suspense fallback={<LoadingPage />}>
                             <ProfilePage />
                         </Suspense>
                     }
@@ -66,7 +57,7 @@ const router = createBrowserRouter(
             <Route
                 path="blog"
                 element={
-                    <Suspense fallback={<Loading />}>
+                    <Suspense fallback={<LoadingPage />}>
                         <Blog />
                     </Suspense>
                 }
@@ -74,7 +65,7 @@ const router = createBrowserRouter(
             <Route
                 path="forgot"
                 element={
-                    <Suspense fallback={<Loading />}>
+                    <Suspense fallback={<LoadingPage />}>
                         <ForgotPasswordPage />
                     </Suspense>
                 }
@@ -82,7 +73,7 @@ const router = createBrowserRouter(
             <Route
                 path="otp"
                 element={
-                    <Suspense fallback={<Loading />}>
+                    <Suspense fallback={<LoadingPage />}>
                         <OneTimePasscodePage />
                     </Suspense>
                 }
@@ -90,7 +81,7 @@ const router = createBrowserRouter(
             <Route
                 path="reset"
                 element={
-                    <Suspense fallback={<Loading />}>
+                    <Suspense fallback={<LoadingPage />}>
                         <ResetPasswordPage />
                     </Suspense>
                 }
@@ -98,7 +89,7 @@ const router = createBrowserRouter(
             <Route
                 path="signin"
                 element={
-                    <Suspense fallback={<Loading />}>
+                    <Suspense fallback={<LoadingPage />}>
                         <SigninPage />
                     </Suspense>
                 }
@@ -106,7 +97,7 @@ const router = createBrowserRouter(
             <Route
                 path="signup"
                 element={
-                    <Suspense fallback={<Loading />}>
+                    <Suspense fallback={<LoadingPage />}>
                         <SignupPage />
                     </Suspense>
                 }
@@ -115,7 +106,7 @@ const router = createBrowserRouter(
                 <Route
                     path="dob"
                     element={
-                        <Suspense fallback={<Loading />}>
+                        <Suspense fallback={<LoadingPage />}>
                             <MyDateOfBirthPage />
                         </Suspense>
                     }
@@ -123,7 +114,7 @@ const router = createBrowserRouter(
                 <Route
                     path="location"
                     element={
-                        <Suspense fallback={<Loading />}>
+                        <Suspense fallback={<LoadingPage />}>
                             <MyLocationPage />
                         </Suspense>
                     }
@@ -131,7 +122,7 @@ const router = createBrowserRouter(
                 <Route
                     path="gender"
                     element={
-                        <Suspense fallback={<Loading />}>
+                        <Suspense fallback={<LoadingPage />}>
                             <MyGenderPage />
                         </Suspense>
                     }
@@ -139,7 +130,7 @@ const router = createBrowserRouter(
                 <Route
                     path="orientation"
                     element={
-                        <Suspense fallback={<Loading />}>
+                        <Suspense fallback={<LoadingPage />}>
                             <MyOrientationPage />
                         </Suspense>
                     }
@@ -147,7 +138,7 @@ const router = createBrowserRouter(
                 <Route
                     path="pics"
                     element={
-                        <Suspense fallback={<Loading />}>
+                        <Suspense fallback={<LoadingPage />}>
                             <MyPicsPage />
                         </Suspense>
                     }
