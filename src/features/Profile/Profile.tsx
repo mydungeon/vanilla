@@ -8,7 +8,6 @@ import {
     BsHeartFill,
     BsThreeDotsVertical,
     BsTrashFill,
-    BsUniversalAccess,
 } from 'react-icons/bs'
 import {
     FaDog,
@@ -20,6 +19,7 @@ import {
     FaChild,
     FaSmoking,
 } from 'react-icons/fa'
+import { FaPerson } from 'react-icons/fa6'
 import { FaImages, FaBan } from 'react-icons/fa'
 import { PiGenderMaleBold } from 'react-icons/pi'
 import { RiHeartsFill } from 'react-icons/ri'
@@ -123,7 +123,7 @@ export default function Profile() {
                             <Truncate text="Male | Straight" />
                         </Stack>
                         <Stack className="p-2" direction="horizontal">
-                            <BsUniversalAccess className="me-3" size={25} />
+                            <FaPerson className="me-3" size={30} />
                             <div className="fs-6">6'2" Fit</div>
                         </Stack>
                         <Stack className="p-2" direction="horizontal">
