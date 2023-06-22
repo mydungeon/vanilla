@@ -4,6 +4,7 @@ import { useAppDispatch } from 'src/hooks'
 import { clearUserAndToken } from 'src/appState/authSlice'
 import { Button } from 'react-bootstrap'
 import { clearLocalStorage } from 'src/app/App.utils'
+import { LAST_LINK_CLASSNAMES } from 'src/features/NavLinks/components/AuthLinks/AuthLinks.constants'
 
 export default function SignoutButton() {
     const navigate = useNavigate()
@@ -15,7 +16,8 @@ export default function SignoutButton() {
     }
     return (
         <Button
-            className="mx-auto "
+            className={`${LAST_LINK_CLASSNAMES} text-decoration-none`}
+            data-testid="signoutButton"
             onClick={handleSignout}
             variant="link"
             size="lg"

@@ -4,7 +4,7 @@ import Page from 'src/features/Page'
 
 export default function NotFoundPage() {
     return (
-        <div className="notFoundPage" data-testid="notFoundPage">
+        <div data-testid="notFoundPage">
             <Layouts.Row1Col3>
                 <Page
                     classNames="text-center"

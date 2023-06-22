@@ -6,11 +6,11 @@ import Cols from 'src/features/Cols'
 
 export default function Row1Col3({
     children,
-    isDarkTheme = false,
+    theme = 'light',
     showLogo = true,
 }: Row1Col3Props) {
     return (
-        <Layout isDarkTheme={isDarkTheme} showLogo={showLogo}>
+        <Layout theme={theme} showLogo={showLogo}>
             <Rows.Single classNames="align-items-center">
                 <Cols.Triple>{children}</Cols.Triple>
             </Rows.Single>

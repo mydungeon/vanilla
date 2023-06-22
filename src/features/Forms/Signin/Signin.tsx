@@ -5,7 +5,7 @@ import { Formik } from 'formik'
 import { Form, Stack } from 'react-bootstrap'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
-import NavLink from 'src/features/NavLink'
+import ButtonLink from 'src/features/Buttons/ButtonLink'
 import { initialValues, validate, validationSchema } from './Signin.config'
 import { useSignInMutation } from 'src/appState/authApi'
 import {
@@ -120,8 +120,7 @@ export default function Signin() {
                             </div>
                             <div className="p-2 m-auto">
                                 <LinkContainer to={FORGOT_LINK.to}>
-                                    <NavLink
-                                        hasBorder={false}
+                                    <ButtonLink
                                         text={FORGOT_LINK.text}
                                         to={FORGOT_LINK.to}
                                     />
@@ -129,8 +128,7 @@ export default function Signin() {
                             </div>
                         </Stack>
                         <LinkContainer to={SIGN_UP_LINK.to}>
-                            <NavLink
-                                hasBorder={false}
+                            <ButtonLink
                                 text={SIGN_UP_LINK.text}
                                 to={SIGN_UP_LINK.to}
                             />

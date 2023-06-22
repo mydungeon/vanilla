@@ -8,7 +8,13 @@ export default function NextButton({
     type,
 }: NextButtonProps) {
     return (
-        <Button className="mx-auto" onClick={handleNext} size="lg" type={type}>
+        <Button
+            data-testid="nextButton"
+            className="mx-auto"
+            onClick={handleNext}
+            size="lg"
+            type={type}
+        >
             {text}
         </Button>
     )

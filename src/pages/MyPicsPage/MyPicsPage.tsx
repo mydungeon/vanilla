@@ -5,7 +5,7 @@ import Page from 'src/features/Page'
 
 export default function MyPicsPage() {
     return (
-        <div className="myPicsPage" data-testid="myPicsPage">
+        <div data-testid="myPicsPage">
             <Layouts.Row1Col3>
                 <Page classNames="text-center" h1Text="My best pic">
                     <MyProfile.Pics />

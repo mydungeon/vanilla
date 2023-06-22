@@ -5,7 +5,7 @@ import Page from 'src/features/Page'
 
 export default function MyDateOfBirthPage() {
     return (
-        <div className="mydateofbirthpage" data-testid="mydateofbirthpage">
+        <div data-testid="mydateofbirthpage">
             <Layouts.Row1Col3>
                 <Page classNames="text-center" h1Text="My birthday is">
                     <MyProfile.DateOfBirth />

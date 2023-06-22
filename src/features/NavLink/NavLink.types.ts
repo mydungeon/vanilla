@@ -1,5 +1,5 @@
 export default interface NavLinkProps {
-    hasBorder?: boolean
+    classNames?: string
     text: string
     to: string
 }

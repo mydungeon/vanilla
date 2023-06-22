@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Formik } from 'formik'
-import { Col, Container, Form, Row, Stack } from 'react-bootstrap'
+import { Form, Stack } from 'react-bootstrap'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
-import NavLink from 'src/features/NavLink'
+import ButtonLink from 'src/features/Buttons/ButtonLink'
 import { initialValues, validate, validationSchema } from './Signup.config'
 import {
     PROFILE_LINKS,
@@ -137,14 +137,13 @@ export default function Signup() {
                         <Stack direction="horizontal">
                             <div className="p-2 m-auto">
                                 <ButtonInput
-                                    text={SIGN_UP_LINK.text}
                                     disabled={!(dirty && isValid)}
+                                    text={SIGN_UP_LINK.text}
                                 />
                             </div>
                             <div className="p-2 m-auto">
                                 <LinkContainer to={SIGN_IN_LINK.to}>
-                                    <NavLink
-                                        hasBorder={false}
+                                    <ButtonLink
                                         text={SIGN_IN_LINK.text}
                                         to={SIGN_IN_LINK.to}
                                     />

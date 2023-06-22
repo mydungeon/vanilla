@@ -5,7 +5,7 @@ import Page from 'src/features/Page'
 
 export default function MyLocationPage() {
     return (
-        <div className="myLocationPage" data-testid="myLocationPage">
+        <div data-testid="myLocationPage">
             <Layouts.Row1Col3>
                 <Page classNames="text-center" h1Text="My zipcode is">
                     <MyProfile.Zipcode />

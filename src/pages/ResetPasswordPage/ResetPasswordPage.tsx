@@ -5,7 +5,7 @@ import Page from 'src/features/Page'
 
 export default function ResetPasswordPage() {
     return (
-        <div className="resetPasswordPage" data-testid="resetPasswordPage">
+        <div data-testid="resetPasswordPage">
             <Layouts.Row1Col3>
                 <Page h1Text="Reset password">
                     <ResetPasswordForm />

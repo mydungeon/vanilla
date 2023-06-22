@@ -12,12 +12,7 @@ export default function TripleWithBorder({
             <Col xs={1} sm={2} lg={3}>
                 {left}
             </Col>
-            <Col
-                className="justify-content-center border-start border-end border-secondary"
-                xs={10}
-                sm={8}
-                lg={6}
-            >
+            <Col className="justify-content-center p-0" xs={10} sm={8} lg={6}>
                 {children}
             </Col>
             <Col xs={1} sm={2} lg={3}>

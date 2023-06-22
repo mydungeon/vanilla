@@ -5,7 +5,7 @@ import Page from 'src/features/Page'
 
 export default function OneTimePasscodePage() {
     return (
-        <div className="oneTimePasscodePage" data-testid="oneTimePasscodePage">
+        <div data-testid="oneTimePasscodePage">
             <Layouts.Row1Col3>
                 <Page h1Text="Enter Your Code">
                     <OneTimePasscodeForm />

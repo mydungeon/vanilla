@@ -1,4 +1,4 @@
 export default interface FooterProps {
-    isDarkTheme?: boolean
+    theme?: string
     handleClick?: () => void
 }

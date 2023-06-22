@@ -3,11 +3,7 @@ import Routes from 'src/routes/Routes'
 // import useAuth from 'src/hooks/useAuth'
 
 function App() {
-    return (
-        <div className="App">
-            <Routes />
-        </div>
-    )
+    return <Routes />
 }
 
 export default App

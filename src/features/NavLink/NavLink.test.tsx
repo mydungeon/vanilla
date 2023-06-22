@@ -3,6 +3,6 @@ import '@testing-library/jest-dom'
 import NavLink from './NavLink'
 
 test('loads and displays NavLink component', async () => {
-    render(<NavLink to="/" text="home" hasBorder={false} />)
+    render(<NavLink to="/" text="home" />)
     expect(screen.getByTestId('navlink')).toBeTruthy()
 })

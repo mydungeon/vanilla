@@ -1,0 +1,51 @@
+$vanilla-pink: #FF1488;
+$headings-font-family: "ice-cream-slant", sans-serif !important;
+$font-family-sans-serif: "brevia-regular", sans-serif !default;
+$font-family-badge: "brevia-semibold", sans-serif !default;
+$font-family-base: $font-family-sans-serif !default;
+// $border-color: $vanilla-pink !default;
+$custom-colors: (
+    "vanillaPink": $vanilla-pink,
+    "uiLightGrey": #cfcfcf
+);
+@import 'bootstrap/scss/bootstrap';
+$all-colors: map-merge-multiple($custom-colors, $blues, $indigos, $purples, $pinks, $reds, $oranges, $yellows, $greens, $teals, $cyans);
+$theme-colors: map-merge($theme-colors, $custom-colors);
+$utilities: map-merge($utilities,
+        ("color": map-merge(map-get($utilities, "color"),
+                (values: map-merge(map-get(map-get($utilities, "color"), "values"),
+                        ($all-colors ),
+                    ),
+                ),
+            ),
+        ));
+$utilities: map-merge($utilities,
+        ("background-color": map-merge(map-get($utilities, "background-color"),
+                (values: map-merge(map-get(map-get($utilities, "background-color"), "values"),
+                        ($all-colors ),
+                    ),
+                ),
+            ),
+        ));
+$utilities: map-merge($utilities,
+        ("border-color": map-merge(map-get($utilities, "border-color"),
+                (values: map-merge(map-get(map-get($utilities, "border-color"), "values"),
+                        ($all-colors ),
+                    ),
+                ),
+            ),
+        ));
+$utilities: map-merge($utilities,
+        ("width": map-merge(map-get($utilities, "width"),
+                (values: map-merge(map-get(map-get($utilities, "width"), "values"),
+                        (2px: 2px, 3px: 3px),
+                    ),
+                ),
+            ),
+        ));
+
+$badge-font-family: (property: font-family,
+    class: badge,
+    values: ($font-family-badge),
+);
+@import "bootstrap/scss/utilities/api";

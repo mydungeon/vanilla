@@ -6,11 +6,11 @@ import Cols from 'src/features/Cols'
 
 export default function Row1Col3TopAligned({
     children,
-    isDarkTheme = false,
+    theme = 'light',
     showLogo = true,
 }: Row1Col3TopAlignedProps) {
     return (
-        <Layout isDarkTheme={isDarkTheme} showLogo={showLogo}>
+        <Layout theme={theme} showLogo={showLogo}>
             <Rows.Single>
                 <Cols.TripleWithBorder>{children}</Cols.TripleWithBorder>
             </Rows.Single>

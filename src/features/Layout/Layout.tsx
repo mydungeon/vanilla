@@ -10,7 +10,7 @@ import EasterEgg from '../EasterEgg'
 export default function Layout({
     children,
     showLogo,
-    isDarkTheme,
+    theme,
     progress,
 }: LayoutProps) {
     const [easterEgg, setEastEgg] = useState(false)
@@ -24,13 +24,10 @@ export default function Layout({
             <Alert />
             <EasterEgg easterEgg={easterEgg}>
                 <Container fluid className="d-flex flex-column vh-100">
-                    <Header showLogo={showLogo} isDarkTheme={isDarkTheme} />
+                    <Header showLogo={showLogo} theme={theme} />
                     {progress && <ProgressBar progress={progress} />}
                     {children}
-                    <Footer
-                        isDarkTheme={isDarkTheme}
-                        handleClick={handleClick}
-                    />
+                    <Footer theme={theme} handleClick={handleClick} />
                 </Container>
             </EasterEgg>
         </div>

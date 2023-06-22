@@ -5,7 +5,7 @@ import Profile from 'src/features/Profile'
 
 export default function ProfilePage() {
     return (
-        <div className="profilePage" data-testid="profilePage">
+        <div data-testid="profilePage">
             <Layouts.Row1Col3TopAligned>
                 <Page>
                     <Profile />

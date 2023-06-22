@@ -10,7 +10,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Form, Stack } from 'react-bootstrap'
 import { TextInput } from 'src/features/FormControls'
 import ButtonInput from 'src/features/FormControls/ButtonInput'
-import NavLink from 'src/features/NavLink'
+import ButtonLink from 'src/features/Buttons/ButtonLink'
 import { useResetMutation } from 'src/appState/authApi'
 import { SIGN_IN_LINK } from 'src/app/App.constants'
 
@@ -106,8 +106,7 @@ export default function ResetPassword() {
                             </div>
                             <div className="p-2 m-auto">
                                 <LinkContainer to={SIGN_IN_LINK.to}>
-                                    <NavLink
-                                        hasBorder={false}
+                                    <ButtonLink
                                         text={SIGN_IN_LINK.text}
                                         to={SIGN_IN_LINK.to}
                                     />

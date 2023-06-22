@@ -5,8 +5,8 @@ import Splash from 'src/features/Splash'
 
 export default function HomePage() {
     return (
-        <div className="homePage" data-testid="homePage">
-            <Layouts.Row1Col3 isDarkTheme={true} showLogo={false}>
+        <div data-testid="homePage">
+            <Layouts.Row1Col3 theme="dark" showLogo={false}>
                 <Page>
                     <Splash />
                 </Page>

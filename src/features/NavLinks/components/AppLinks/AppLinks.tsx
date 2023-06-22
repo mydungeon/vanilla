@@ -7,9 +7,9 @@ import { getNavLinks } from './AppLinks.utils'
 export default function AppLinks({ children }: AppLinksProps) {
     const [isLoggedIn] = useAuth()
     return (
-        <div className="applinks" data-testid="applinks">
+        <div data-testid="applinks">
             {getNavLinks(isLoggedIn).map(({ text, to }, i, array) => (
-                <NavLink key={text} text={text} to={to} hasBorder={true} />
+                <NavLink key={text} text={text} to={to} />
             ))}
         </div>
     )

@@ -10,7 +10,7 @@ export default function ButtonInput({
     return (
         <Button
             className="fs-5"
-            variant="primary"
+            variant="outline-dark"
             type="submit"
             disabled={disabled}
             size="lg"

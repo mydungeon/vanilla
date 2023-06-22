@@ -21,7 +21,7 @@ export default function Splash({ children }: SplashProps) {
                         <LinkContainer to="signup">
                             <Button
                                 className="mx-auto"
-                                variant="primary"
+                                variant="outline-dark"
                                 size="lg"
                             >
                                 Sign up
@@ -30,7 +30,7 @@ export default function Splash({ children }: SplashProps) {
                         <LinkContainer to="signin">
                             <Button
                                 className="mx-auto"
-                                variant="primary"
+                                variant="outline-dark"
                                 size="lg"
                             >
                                 Sign in

@@ -5,7 +5,7 @@ import Page from 'src/features/Page'
 
 export default function SigninPage() {
     return (
-        <div className="signinPage" data-testid="signinPage">
+        <div data-testid="signinPage">
             <Layouts.Row1Col3>
                 <Page h1Text="Sign in">
                     <SigninForm />

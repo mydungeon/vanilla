@@ -5,7 +5,7 @@ import Page from 'src/features/Page'
 
 export default function MyOrientationPage() {
     return (
-        <div className="myOrientationPage" data-testid="myOrientationPage">
+        <div data-testid="myOrientationPage">
             <Layouts.Row1Col3>
                 <Page classNames="text-center" h1Text="I am seeking">
                     <MyProfile.Orientation />
