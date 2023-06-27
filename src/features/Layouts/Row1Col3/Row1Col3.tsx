@@ -8,7 +8,7 @@ export default function Row1Col3({
     children,
     progress,
     showLogo = true,
-    theme = 'dark',
+    theme = 'light',
 }: Row1Col3Props) {
     return (
         <Layout theme={theme} showLogo={showLogo} progress={progress}>
