@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { useAppSelector } from 'src/hooks'
 import { Badge, Col, Container, Row, Stack } from 'react-bootstrap'
 import {
@@ -25,31 +26,37 @@ import { PiGenderMaleBold } from 'react-icons/pi'
 import { RiHeartsFill } from 'react-icons/ri'
 import { selectAuth } from 'src/appState/authSlice'
 import ProfilePic from 'src/features/ProfilePic'
-import { useGetProfileQuery } from 'src/appState/profileApi'
-import { getUserFromLocalStorage } from 'src/app/App.utils'
+import { useLazyGetProfileQuery } from 'src/appState/profileApi'
 import { H1 } from 'src/features/Elements'
 import Truncate from '../Truncate'
 import { INTERESTS } from './Profile.constants'
-import CarouselModal from '../CarouselModal'
-import ChatModal from '../ChatModal'
-import UserActionsModal from '../UserActionsModal'
+import Modals from 'src/features/Modals'
 
 //INFO: https://redux-toolkit.js.org/rtk-query/usage/queries
 export default function Profile() {
+    const { userId } = useParams()
     const [carouselModalShow, setCarouselModalShow] = useState(false)
     const [chatModalShow, setChatModalShow] = useState(false)
     const [userActionsModalShow, setUserActionsModalShow] = useState(false)
+    const [profileData, setProfileData] = useState<any>()
     const { name } = useAppSelector(selectAuth)
-    const { id } = getUserFromLocalStorage() || {}
-    const { data: profile, isFetching } = useGetProfileQuery({ id })
-    if (!profile) return <div>No profile!</div>
-    if (isFetching) return <div>...isFetching</div>
+    const [getProfile, { isError, data }] = useLazyGetProfileQuery()
+    useEffect(() => {
+        if (data) {
+            setProfileData(data)
+        }
+        if (userId && !profileData && !isError) {
+            getProfile({ userId })
+        }
+    }, [getProfile, isError, profileData, data, userId])
     return (
         <>
             <div className="profile mt-4" data-testid="profile">
                 <Stack>
                     <div className="m-auto mb-1">
-                        {profile && <ProfilePic fileName={profile?.fileName} />}
+                        {profileData && (
+                            <ProfilePic fileName={profileData.fileName} />
+                        )}
                     </div>
                     <Container fluid>
                         <Row className="align-items-center justify-content-center">
@@ -191,16 +198,16 @@ export default function Profile() {
                 </div>
                 {/* <SignoutButton /> */}
             </div>
-            <CarouselModal
+            <Modals.CarouselModal
                 show={carouselModalShow}
                 onHide={() => setCarouselModalShow(false)}
             />
-            <ChatModal
+            <Modals.ChatModal
                 onHide={() => setChatModalShow(false)}
                 placement="end"
                 show={chatModalShow}
             />
-            <UserActionsModal
+            <Modals.UserActionsModal
                 show={userActionsModalShow}
                 onHide={() => setUserActionsModalShow(false)}
             />

@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import { useAppDispatch } from 'src/hooks'
 import { getUserFromLocalStorage } from 'src/app/App.utils'
 import { setUserAndToken } from 'src/appState/authSlice'
+import { Profile } from 'src/features/Profile/Profile.types'
 
 const useAuth = () => {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState<Profile>()
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const dispatch = useAppDispatch()
     useEffect(() => {
@@ -14,7 +15,7 @@ const useAuth = () => {
             setUser(user)
             dispatch(setUserAndToken(user))
         }
-    }, [])
+    }, [dispatch])
 
     return [isLoggedIn, user]
 }

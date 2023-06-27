@@ -1,13 +1,14 @@
 import VANILLA_LOGO from 'src/assets/svg/vanilla.svg'
 import GAIM_LOGO from 'src/assets/svg/gaim.svg'
 import HEART from 'src/assets/svg/heart.svg'
+import { getUserIdFromLocalStorage } from './App.utils'
 
 const VANILLA = 'vanilla'
 const VANILLA_TAGLINES = [
     `What's ur flavor?`,
     `Goes great with chocolate`,
     `With a cherry on top`,
-    `The gateway drug to all flavors`,
+    `The gateway to all flavors`,
     `2 scoops w/ rainbow sprinkles`,
     `All melty and sweet`,
     `It's sooooo yummy`,
@@ -45,7 +46,7 @@ export const PROFILE_LINKS = {
     },
     INDEX: {
         text: 'My Profile',
-        to: '/profile',
+        to: `/profile`,
     },
     LOCATION: {
         text: 'My DoB',
@@ -68,7 +69,7 @@ const APP_LINKS = [HOME_LINK, BLOG_LINK]
 
 const AUTH_LINKS = [SIGN_IN_LINK, SIGN_UP_LINK]
 
-const PROTECTED_LINKS = [ADMIN_LINK, PROFILE_LINKS.INDEX]
+const PROTECTED_LINKS = [ADMIN_LINK]
 
 export {
     APP_LINKS,

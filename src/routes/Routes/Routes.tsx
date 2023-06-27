@@ -46,7 +46,7 @@ const router = createBrowserRouter(
                     }
                 />
                 <Route
-                    path="profile"
+                    path="profile/:userId"
                     element={
                         <Suspense fallback={<LoadingPage />}>
                             <ProfilePage />

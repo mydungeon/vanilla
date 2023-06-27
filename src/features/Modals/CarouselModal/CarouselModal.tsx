@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
 import CarouselModalProps from './CarouselModal.types'
-import ImageCarousel from '../ImageCarousel'
+import ImageCarousel from 'src/features/ImageCarousel'
 
 export default function CarouselModal({
     children,

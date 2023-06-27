@@ -1,12 +1,15 @@
-$vanilla-pink: #FF1488;
+$vanilla-pink-hex: #FF1488;
+$vanilla-pink-rgba: rgba(255, 20, 136, 0.94);
 $headings-font-family: "ice-cream-slant", sans-serif !important;
 $font-family-sans-serif: "brevia-regular", sans-serif !default;
 $font-family-badge: "brevia-semibold", sans-serif !default;
 $font-family-base: $font-family-sans-serif !default;
 $custom-colors: (
-    "vanillaPink": $vanilla-pink,
+    "vanillaPink": $vanilla-pink-hex,
     "uiLightGrey": #cfcfcf
 );
+// $input-box-shadow: $vanilla-pink;
+$input-focus-box-shadow: 0px 0px 12px -4px $vanilla-pink-rgba;
 @import 'bootstrap/scss/bootstrap';
 $all-colors: map-merge-multiple($custom-colors, $blues, $indigos, $purples, $pinks, $reds, $oranges, $yellows, $greens, $teals, $cyans);
 $theme-colors: map-merge($theme-colors, $custom-colors);

@@ -53,7 +53,7 @@ export default function Signin() {
                     token,
                 })
             )
-            navigate(PROFILE_LINKS.INDEX.to)
+            navigate(`${PROFILE_LINKS.INDEX.to}/${_id}`)
         }
     }, [isSignInSuccess])
 

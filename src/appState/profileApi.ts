@@ -18,12 +18,12 @@ export const profileApi = createApi({
             }),
         }),
         getProfile: builder.query({
-            query: ({ id }) => ({
-                url: `/profile/${id}`,
+            query: ({ userId }) => ({
+                url: `/profile/${userId}`,
                 method: 'get',
             }),
         }),
     }),
 })
 
-export const { useCreateProfileMutation, useGetProfileQuery } = profileApi
+export const { useCreateProfileMutation, useLazyGetProfileQuery } = profileApi

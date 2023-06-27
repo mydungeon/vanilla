@@ -4,12 +4,13 @@ import { Button } from 'react-bootstrap'
 import './ButtonInput.styles.scss'
 
 export default function ButtonInput({
+    classNames = 'fs-5',
     disabled = true,
     text,
 }: ButtonInputProps) {
     return (
         <Button
-            className="fs-5"
+            className={classNames}
             variant="outline-dark"
             type="submit"
             disabled={disabled}

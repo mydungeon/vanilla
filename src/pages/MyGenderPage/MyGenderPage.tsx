@@ -6,7 +6,7 @@ import Page from 'src/features/Page'
 export default function MyGenderPage() {
     return (
         <div data-testid="myGenderPage">
-            <Layouts.Row1Col3>
+            <Layouts.Row1Col3 progress={60}>
                 <Page classNames="text-center" h1Text="I am a">
                     <MyProfile.Gender />
                 </Page>
