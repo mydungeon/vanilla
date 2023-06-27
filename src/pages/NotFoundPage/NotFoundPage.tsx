@@ -5,12 +5,12 @@ import Page from 'src/features/Page'
 export default function NotFoundPage() {
     return (
         <div data-testid="notFoundPage">
-            <Layouts.Row1Col3>
+            <Layouts.VerticalCentered>
                 <Page
                     classNames="text-center"
                     h1Text="Sorry...Page Not Found"
                 />
-            </Layouts.Row1Col3>
+            </Layouts.VerticalCentered>
         </div>
     )
 }

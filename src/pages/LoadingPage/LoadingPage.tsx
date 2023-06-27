@@ -7,11 +7,11 @@ import { Image } from 'react-bootstrap'
 export default function NotFoundPage() {
     return (
         <div data-testid="notFoundPage">
-            <Layouts.Row1Col3>
+            <Layouts.VerticalCentered>
                 <Page classNames="text-center" h1Text="Loading...">
                     <Image src={heartPreloader} />
                 </Page>
-            </Layouts.Row1Col3>
+            </Layouts.VerticalCentered>
         </div>
     )
 }

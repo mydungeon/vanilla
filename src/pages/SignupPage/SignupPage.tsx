@@ -6,11 +6,11 @@ import Page from 'src/features/Page'
 export default function SignupPage() {
     return (
         <div data-testid="signupPage">
-            <Layouts.Row1Col3>
+            <Layouts.VerticalCentered>
                 <Page h1Text="Sign up">
                     <SignupForm />
                 </Page>
-            </Layouts.Row1Col3>
+            </Layouts.VerticalCentered>
         </div>
     )
 }

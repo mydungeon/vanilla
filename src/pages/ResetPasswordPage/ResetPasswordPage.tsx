@@ -6,11 +6,11 @@ import Page from 'src/features/Page'
 export default function ResetPasswordPage() {
     return (
         <div data-testid="resetPasswordPage">
-            <Layouts.Row1Col3>
+            <Layouts.VerticalCentered>
                 <Page h1Text="Reset password">
                     <ResetPasswordForm />
                 </Page>
-            </Layouts.Row1Col3>
+            </Layouts.VerticalCentered>
         </div>
     )
 }

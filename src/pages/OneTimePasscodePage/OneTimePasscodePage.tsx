@@ -6,11 +6,11 @@ import Page from 'src/features/Page'
 export default function OneTimePasscodePage() {
     return (
         <div data-testid="oneTimePasscodePage">
-            <Layouts.Row1Col3>
+            <Layouts.VerticalCentered>
                 <Page h1Text="Enter Your Code">
                     <OneTimePasscodeForm />
                 </Page>
-            </Layouts.Row1Col3>
+            </Layouts.VerticalCentered>
         </div>
     )
 }

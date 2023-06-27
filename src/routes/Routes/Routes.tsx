@@ -1,29 +1,12 @@
-import React, { lazy, Suspense } from 'react'
+import React from 'react'
 import {
     createBrowserRouter,
     createRoutesFromElements,
     Route,
     RouterProvider,
 } from 'react-router-dom'
-import ProtectedRoute from '../ProtectedRoute'
-import LoadingPage from 'src/pages/LoadingPage'
-import NotFoundPage from 'src/pages/NotFoundPage'
-import MyDateOfBirthPage from 'src/pages/MyDateOfBirthPage'
-import MyLocationPage from 'src/pages/MyLocationPage'
-import MyGenderPage from 'src/pages/MyGenderPage'
-import MyOrientationPage from 'src/pages/MyOrientationPage'
-import MyPicsPage from 'src/pages/MyPicsPage'
-import './PagePreloader.styles.scss'
-
-const AdminPage = lazy(() => import('src/pages/AdminPage'))
-const Blog = lazy(() => import('src/blog/Blog'))
-const ForgotPasswordPage = lazy(() => import('src/pages/ForgotPasswordPage'))
-const HomePage = lazy(() => import('src/pages/HomePage'))
-const OneTimePasscodePage = lazy(() => import('src/pages/OneTimePasscodePage'))
-const ProfilePage = lazy(() => import('src/pages/ProfilePage'))
-const ResetPasswordPage = lazy(() => import('src/pages/ResetPasswordPage'))
-const SigninPage = lazy(() => import('src/pages/SigninPage'))
-const SignupPage = lazy(() => import('src/pages/SignupPage'))
+import ProtectedRoute from 'src/routes/ProtectedRoute'
+import { Pages, Suspended } from 'src/pages'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -31,120 +14,121 @@ const router = createBrowserRouter(
             <Route
                 index
                 element={
-                    <Suspense fallback={<LoadingPage />}>
-                        <HomePage />
-                    </Suspense>
+                    <Suspended>
+                        <Pages.HomePage />
+                    </Suspended>
                 }
             />
             <Route element={<ProtectedRoute />}>
+                Pages.
                 <Route
                     path="admin"
                     element={
-                        <Suspense fallback={<LoadingPage />}>
-                            <AdminPage />
-                        </Suspense>
+                        <Suspended>
+                            <Pages.AdminPage />
+                        </Suspended>
                     }
                 />
                 <Route
                     path="profile/:userId"
                     element={
-                        <Suspense fallback={<LoadingPage />}>
-                            <ProfilePage />
-                        </Suspense>
+                        <Suspended>
+                            <Pages.ProfilePage />
+                        </Suspended>
                     }
                 />
             </Route>
             <Route
                 path="blog"
                 element={
-                    <Suspense fallback={<LoadingPage />}>
-                        <Blog />
-                    </Suspense>
+                    <Suspended>
+                        <Pages.Blog />
+                    </Suspended>
                 }
             />
             <Route
                 path="forgot"
                 element={
-                    <Suspense fallback={<LoadingPage />}>
-                        <ForgotPasswordPage />
-                    </Suspense>
+                    <Suspended>
+                        <Pages.ForgotPasswordPage />
+                    </Suspended>
                 }
             />
             <Route
                 path="otp"
                 element={
-                    <Suspense fallback={<LoadingPage />}>
-                        <OneTimePasscodePage />
-                    </Suspense>
+                    <Suspended>
+                        <Pages.OneTimePasscodePage />
+                    </Suspended>
                 }
             />
             <Route
                 path="reset"
                 element={
-                    <Suspense fallback={<LoadingPage />}>
-                        <ResetPasswordPage />
-                    </Suspense>
+                    <Suspended>
+                        <Pages.ResetPasswordPage />
+                    </Suspended>
                 }
             />
             <Route
                 path="signin"
                 element={
-                    <Suspense fallback={<LoadingPage />}>
-                        <SigninPage />
-                    </Suspense>
+                    <Suspended>
+                        <Pages.SigninPage />
+                    </Suspended>
                 }
             />
             <Route
                 path="signup"
                 element={
-                    <Suspense fallback={<LoadingPage />}>
-                        <SignupPage />
-                    </Suspense>
+                    <Suspended>
+                        <Pages.SignupPage />
+                    </Suspended>
                 }
             />
             <Route path="profile">
                 <Route
                     path="dob"
                     element={
-                        <Suspense fallback={<LoadingPage />}>
-                            <MyDateOfBirthPage />
-                        </Suspense>
+                        <Suspended>
+                            <Pages.MyProfile.DateOfBirthPage />
+                        </Suspended>
                     }
                 />
                 <Route
                     path="location"
                     element={
-                        <Suspense fallback={<LoadingPage />}>
-                            <MyLocationPage />
-                        </Suspense>
+                        <Suspended>
+                            <Pages.MyProfile.LocationPage />
+                        </Suspended>
                     }
                 />
                 <Route
                     path="gender"
                     element={
-                        <Suspense fallback={<LoadingPage />}>
-                            <MyGenderPage />
-                        </Suspense>
+                        <Suspended>
+                            <Pages.MyProfile.GenderPage />
+                        </Suspended>
                     }
                 />
                 <Route
                     path="orientation"
                     element={
-                        <Suspense fallback={<LoadingPage />}>
-                            <MyOrientationPage />
-                        </Suspense>
+                        <Suspended>
+                            <Pages.MyProfile.OrientationPage />
+                        </Suspended>
                     }
                 />
                 <Route
                     path="pics"
                     element={
-                        <Suspense fallback={<LoadingPage />}>
-                            <MyPicsPage />
-                        </Suspense>
+                        <Suspended>
+                            <Pages.MyProfile.PicsPage />
+                        </Suspended>
                     }
                 />
             </Route>
-            <Route path="*" element={<NotFoundPage />} />
+            <Route path="*" element={<Pages.NotFoundPage />} />
         </>
     )
 )
