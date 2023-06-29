@@ -1,17 +1,18 @@
 import React from 'react'
-import Layouts from 'src/features/Layouts'
 import Page from 'src/features/Page'
 import heartPreloader from 'src/assets/gif/heart-preloader.gif'
-import { Image } from 'react-bootstrap'
+import { Col, Container, Image, Row } from 'react-bootstrap'
 
-export default function NotFoundPage() {
+export default function LoadingPage() {
     return (
-        <div data-testid="notFoundPage">
-            <Layouts.VerticalCentered>
-                <Page classNames="text-center" h1Text="Loading...">
-                    <Image src={heartPreloader} />
-                </Page>
-            </Layouts.VerticalCentered>
-        </div>
+        <Container fluid className="d-flex flex-column vh-100">
+            <Row className="flex-grow-1 align-items-center">
+                <Col className="justify-content-center">
+                    <Page classNames="text-center" h1Text="Loading...">
+                        <Image src={heartPreloader} />
+                    </Page>
+                </Col>
+            </Row>
+        </Container>
     )
 }

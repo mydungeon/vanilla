@@ -12,7 +12,12 @@ const Blog = lazy(() => import('src/blog/Blog'))
 const ForgotPasswordPage = lazy(() => import('src/pages/ForgotPasswordPage'))
 const HomePage = lazy(() => import('src/pages/HomePage'))
 const OneTimePasscodePage = lazy(() => import('src/pages/OneTimePasscodePage'))
+const ProfileEditPage = lazy(() => import('src/pages/ProfileEditPage'))
 const ProfilePage = lazy(() => import('src/pages/ProfilePage'))
+const ProfilePreferencesPage = lazy(
+    () => import('src/pages/ProfilePreferencesPage')
+)
+const ProfileSettingsPage = lazy(() => import('src/pages/ProfileSettingsPage'))
 const ResetPasswordPage = lazy(() => import('src/pages/ResetPasswordPage'))
 const SigninPage = lazy(() => import('src/pages/SigninPage'))
 const SignupPage = lazy(() => import('src/pages/SignupPage'))
@@ -33,7 +38,10 @@ export const Pages = {
     HomePage,
     OneTimePasscodePage,
     MyProfile,
+    ProfileEditPage,
     ProfilePage,
+    ProfilePreferencesPage,
+    ProfileSettingsPage,
     ResetPasswordPage,
     SigninPage,
     SignupPage,

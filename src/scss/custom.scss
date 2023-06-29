@@ -1,3 +1,4 @@
+$ui-lt-grey-hex: #EEE;
 $vanilla-pink-hex: #FF1488;
 $vanilla-pink-rgba: rgba(255, 20, 136, 0.94);
 $headings-font-family: "ice-cream-slant", sans-serif !important;
@@ -6,7 +7,7 @@ $font-family-badge: "brevia-semibold", sans-serif !default;
 $font-family-base: $font-family-sans-serif !default;
 $custom-colors: (
     "vanillaPink": $vanilla-pink-hex,
-    "uiLightGrey": #cfcfcf
+    "uiLightGrey": $ui-lt-grey-hex
 );
 // $input-box-shadow: $vanilla-pink;
 $input-focus-box-shadow: 0px 0px 12px -4px $vanilla-pink-rgba;
@@ -50,4 +51,11 @@ $badge-font-family: (property: font-family,
     class: badge,
     values: ($font-family-badge),
 );
+.profileTabs .nav-link.active {
+    border-bottom: 3px solid #000;
+    font-weight: bold;
+}
+.profileTabs .nav-link:hover {
+    background-color: $ui-lt-grey-hex;
+}
 @import "bootstrap/scss/utilities/api";
