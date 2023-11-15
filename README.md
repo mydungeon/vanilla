@@ -15,6 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 -   [Sass](https://sass-lang.com/)
 -   [eslint](https://eslint.org/)
 -   [prettier](https://prettier.io/)
+-   [react-toastify](https://fkhadra.github.io/react-toastify/introduction)
 
 ## Available Scripts
 
